@@ -1,0 +1,46 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Copyright (C) 2023 Emily "TTG" Banerjee <prs.ttg+aga@pm.me> -->
+
+<!DOCTYPE
+    HTML
+    PUBLIC
+    "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<HTML LANG="EN">
+    <HEAD>
+        <TITLE>AftGangAglay</TITLE>
+        <LINK
+            REL="ICON"
+            TYPE="IMAGE/SVG"
+            HREF="https://raw.githubusercontent.com/AftGangAglay/AftGangAglay/trunk/res/aga.svg">
+
+        <META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH">
+        <META CHARSET="UTF-8">
+    </HEAD>
+    <BODY>
+        <CENTER>
+            <H1>AftGangAglay Documentation</H1>
+            <HR>
+            <H2>Overview</H2>
+            <P>
+                An application written for the AftGangAglay engine consists of a set of scripts and assets, alongside a
+                <A HREF="config.html">configuration file</A> which tells the engine how to properly execute the
+                application.
+            </P>
+            <P>
+                The engine runtime itself consists of a single executable which consumes these files and produces the
+                desired output (graphics, sound, etc.). The recommended distribution mechanism uses this as the
+                user-facing application - i.e. the executable a user would use to launch the application. Further
+                packaging information and CLI documentation for the engine executable can be found
+                <A HREF="exec.html">here</A>.
+            </P>
+            <P>
+                Applications are scripted using an early version of the Python programming language, and interface with
+                the engine through a script API. An index of the functions found in the <EM>native</EM> script API
+                (<TT>agan</TT>) is listed <A HREF="api_index.html">here</A>, aswell as the
+                <A HREF="agascript.html">script-side support library</A> (<TT>AGAScriptLib</TT>).
+            </P>
+            <HR>
+        </CENTER>
+    </BODY>
+</HTML>
