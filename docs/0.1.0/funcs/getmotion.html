@@ -53,28 +53,28 @@
                         <TR>
                             <TD>
                                 <PRE>
-import aga
+import agan
 
 class game():
     def create(self):
         return self
     #
     def update(self):
-        m = aga.getmotion()
+        m = agan.getmotion()
         #
         if(m[0] > 0.0):
-            aga.log("Mouse is moving right")
+            agan.log("Mouse is moving right")
         elif(m[0] &lt; 0.0):
-            aga.log("Mouse is moving left")
+            agan.log("Mouse is moving left")
         else:
-            aga.log("Mouse is not moving left or right")
+            agan.log("Mouse is not moving left or right")
         #
         if(m[1] > 0.0):
-            aga.log("Mouse is moving down")
+            agan.log("Mouse is moving down")
         elif(m[1] &lt; 0.0):
-            aga.log("Mouse is moving up")
+            agan.log("Mouse is moving up")
         else:
-            aga.log("Mouse is not moving up or down")
+            agan.log("Mouse is not moving up or down")
                                 </PRE>
                             </TD>
                         </TR>

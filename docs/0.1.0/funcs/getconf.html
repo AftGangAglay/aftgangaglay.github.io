@@ -92,15 +92,18 @@
                         <TR>
                             <TD>
                                 <PRE>
-import aga
+import agan
 
 class game():
     def create(self):
-        ver = aga.getconf(['General', 'Version'])
-        aga.log("Running under AGA version " + ver)
+        ver = agan.getconf(['General', 'Version'])
+        agan.log("Running under AGA version " + ver)
         return self
     #
     def update(self):
+        pass
+    #
+    def close(self):
         pass
                                 </PRE>
                             </TD>

@@ -21,7 +21,7 @@
         <CENTER>
             <H1>AftGangAglay Documentation</H1>
             <HR>
-            <H2><TT>getkey</TT></H2>
+            <H2><TT>mkvertbuf</TT></H2>
             <H3>Parameters</H3>
             <P>
                 <TABLE>
@@ -31,12 +31,9 @@
                         <TD><EM>Description</EM></TD>
                     </TR>
                     <TR>
-                        <TD><TT>keycode</TT></TD>
-                        <TD><TT>int</TT></TD>
-                        <TD>
-                            The code of the key whose state should be read. Available values are named in the
-                            <A HREF="../agascript.html">script support library</A>.
-                        </TD>
+                        <TD><TT>data</TT></TD>
+                        <TD><TT>nativeptr</TT></TD>
+                        <TD>The vertex data to load</TD>
                     </TR>
                 </TABLE>
             </P>
@@ -48,19 +45,44 @@
                         <TD><EM>Description</EM></TD>
                     </TR>
                     <TR>
-                        <TD><TT>int</TT></TD>
+                        <TD><TT>nativeptr</TT></TD>
                         <TD>
-                            The state of the requested key - <TT>True</TT> for held, <TT>False</TT> for released.
+                            A handle to the created vertex buffer
                         </TD>
                     </TR>
                 </TABLE>
             </P>
             <H3>Description</H3>
             <P>
-                Fetches the current state of the key named by <TT>keycode</TT> - held or released. Keycodes refer to
-                physical keys and not characters, so modifiers are reported the same as others.
-
-                If the requested keycode is outside of the keymap bounds, <TT>None</TT> is instead returned.
+                Creates a pseudo-vertex buffer from a set of vertex data.
+                The vertex format is as follows (taken from 
+                <TT>
+                    <A HREF="https://github.com/AftGangAglay/AftGangAglay/blob/trunk/src/agadraw.c#L18">
+                        agadraw.c
+                    </A>
+                </TT>):
+            </P>
+            <P>
+                <CODE>
+                    <TABLE>
+                        <TR>
+                            <TD>
+                                <PRE>
+struct aga_vertex {
+    float col[4];
+    float uv[2];
+    float norm[3];
+    float pos[3];
+};
+                                </PRE>
+                            </TD>
+                        </TR>
+                    </TABLE>
+                </CODE>
+            </P>
+            <P>
+                Once no longer in use, handles should be closed using
+                <TT><A HREF="killvertbuf.html">killvertbuf</A></TT>.
             </P>
             <H3>Example</H3>
             <P>
@@ -70,21 +92,21 @@
                             <TD>
                                 <PRE>
 import agan
+import aga
 
 class game():
     def create(self):
+        self.f = agan.mklargefile('vertices.raw')
+        self.vbuf = agan.mkvertbuf(f)
+        self.trans = aga.transform().create()
         return self
     #
     def update(self):
-        if(agan.getkey(agan.KEY_w)):
-            agan.log("The W key is held!")
-        elif(agan.getkey(agan.KEY_l)):
-            agan.log("The L key is held!")
-        else:
-            agan.log("Neither of my keys are held :(")
+        agan.drawbuf(self.vbuf, aga.TRIANGLES, self.trans)
     #
     def close(self):
-        pass
+        agan.killvertbuf(self.vbuf)
+        agan.killlargefile(self.f)
                                 </PRE>
                             </TD>
                         </TR>

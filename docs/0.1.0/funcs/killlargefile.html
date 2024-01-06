@@ -21,7 +21,7 @@
         <CENTER>
             <H1>AftGangAglay Documentation</H1>
             <HR>
-            <H2><TT>getkey</TT></H2>
+            <H2><TT>killlargefile</TT></H2>
             <H3>Parameters</H3>
             <P>
                 <TABLE>
@@ -31,36 +31,21 @@
                         <TD><EM>Description</EM></TD>
                     </TR>
                     <TR>
-                        <TD><TT>keycode</TT></TD>
-                        <TD><TT>int</TT></TD>
-                        <TD>
-                            The code of the key whose state should be read. Available values are named in the
-                            <A HREF="../agascript.html">script support library</A>.
-                        </TD>
+                        <TD><TT>handle</TT></TD>
+                        <TD><TT>nativeptr</TT></TD>
+                        <TD>The large file handle to close</TD>
                     </TR>
                 </TABLE>
             </P>
             <H3>Return Value</H3>
             <P>
-                <TABLE>
-                    <TR>
-                        <TD><EM>Type</EM></TD>
-                        <TD><EM>Description</EM></TD>
-                    </TR>
-                    <TR>
-                        <TD><TT>int</TT></TD>
-                        <TD>
-                            The state of the requested key - <TT>True</TT> for held, <TT>False</TT> for released.
-                        </TD>
-                    </TR>
-                </TABLE>
+                N/A
             </P>
             <H3>Description</H3>
             <P>
-                Fetches the current state of the key named by <TT>keycode</TT> - held or released. Keycodes refer to
-                physical keys and not characters, so modifiers are reported the same as others.
-
-                If the requested keycode is outside of the keymap bounds, <TT>None</TT> is instead returned.
+                Closes a "large file strategy" handle previously opened by
+                <TT><A HREF="mklargefile.html">mklargefile</A></TT>. All
+                objects created using the handle should be closed before calling <TT>killlargefile</TT>.
             </P>
             <H3>Example</H3>
             <P>
@@ -73,18 +58,16 @@ import agan
 
 class game():
     def create(self):
+        self.f = agan.mklargefile('test.txt')
+        self.clip = agan.mkclip(f)
         return self
     #
     def update(self):
-        if(agan.getkey(agan.KEY_w)):
-            agan.log("The W key is held!")
-        elif(agan.getkey(agan.KEY_l)):
-            agan.log("The L key is held!")
-        else:
-            agan.log("Neither of my keys are held :(")
+        pass
     #
     def close(self):
-        pass
+        agan.killclip(self.clip) # `clip' created from `f' and must die first.
+        agan.killlargefile(self.f)
                                 </PRE>
                             </TD>
                         </TR>

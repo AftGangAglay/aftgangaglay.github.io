@@ -61,16 +61,17 @@
                         <TR>
                             <TD>
                                 <PRE>
+import agan
 import aga
 
 class game():
     def create(self):
         # Default to world origin.
-        self.trans = transform().create()
+        self.trans = aga.transform().create()
         return self
     #
     def update(self):
-        aga.setcam(self.trans, 1)
+        agan.setcam(self.trans, 1)
         # Move along +x
         self.trans.pos[0] = self.trans.pos[0] + 0.1f
                                 </PRE>
