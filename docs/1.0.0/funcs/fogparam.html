@@ -21,7 +21,7 @@
         <CENTER>
             <H1>AftGangAglay Documentation</H1>
             <HR>
-            <H2><TT>setcam</TT></H2>
+            <H2><TT>fogparam</TT></H2>
             <H3>Parameters</H3>
             <P>
                 <TABLE>
@@ -31,16 +31,10 @@
                         <TD><EM>Description</EM></TD>
                     </TR>
                     <TR>
-                        <TD><TT>trans</TT></TD>
-                        <TD><TT>dict</TT></TD>
-                        <TD>The inverse transform matrix of the camera</TD>
-                    </TR>
-                    <TR>
-                        <TD><TT>mode</TT></TD>
-                        <TD><TT>int</TT></TD>
+                        <TD><TT>float[]</TT></TD>
+                        <TD><TT>param</TT></TD>
                         <TD>
-                            The projection mode of the camera - <TT>1</TT> for perspective and <TT>0</TT> for
-                            orthographic.
+                            The fog parameter data.
                         </TD>
                     </TR>
                 </TABLE>
@@ -51,8 +45,33 @@
             </P>
             <H3>Description</H3>
             <P>
-                Sets the camera projection mode and position for subsequent rendering. This can be used to manipulate
-                the apparent position of static objects or for rendering UI elements separately to a 3D world.
+                Sets graphical fog parameters. The fog feature is always enabled, so to hide the effect set the
+                <TT>density</TT> parameter to <TT>0.0</TT>.
+            </P>
+            <P>
+                The parameters are formatted as follows:
+                <TABLE>
+                    <TR>
+                        <TD><EM>Index</EM></TD>
+                        <TD><EM>Name</EM></TD>
+                        <TD><EM>Description</EM></TD>
+                    </TR>
+                    <TR>
+                        <TD><TT>0</TT></TD>
+                        <TD><TT>density</TT></TD>
+                        <TD>Fog density, normalized</TD>
+                    </TR>
+                    <TR>
+                        <TD><TT>1</TT></TD>
+                        <TD><TT>start</TT></TD>
+                        <TD>Fog start distance</TD>
+                    </TR>
+                    <TR>
+                        <TD><TT>2</TT></TD>
+                        <TD><TT>end</TT></TD>
+                        <TD>Fog end distance</TD>
+                    </TR>
+                </TABLE>
             </P>
             <H3>Example</H3>
             <P>
@@ -65,14 +84,10 @@ import agan
 
 class game():
     def create(self):
-        # Default to world origin.
-        self.trans = agan.mktrans()
         return self
     #
     def update(self):
-        agan.setcam(self.trans, 1)
-        # Move along +x
-        self.trans['pos'][0] = self.trans['pos'][0] + 0.1f
+        agan.fogparam([ 0.5, 1.0, 10.0 ])
     #
     def close(self):
         pass
