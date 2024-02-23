@@ -1,0 +1,86 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Copyright (C) 2023 Emily "TTG" Banerjee <prs.ttg+aga@pm.me> -->
+
+<!DOCTYPE
+    HTML
+    PUBLIC
+    "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<HTML LANG="EN">
+    <HEAD>
+        <TITLE>AftGangAglay</TITLE>
+        <LINK
+            REL="ICON"
+            TYPE="IMAGE/SVG"
+            HREF="https://raw.githubusercontent.com/AftGangAglay/AftGangAglay/trunk/res/aga.svg">
+
+        <META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH">
+        <META CHARSET="UTF-8">
+    </HEAD>
+    <BODY>
+        <CENTER>
+            <H1>AftGangAglay Documentation</H1>
+            <HR>
+            <H2><TT>setcam</TT></H2>
+            <H3>Parameters</H3>
+            <P>
+                <TABLE>
+                    <TR>
+                        <TD><EM>Parameter</EM></TD>
+                        <TD><EM>Type</EM></TD>
+                        <TD><EM>Description</EM></TD>
+                    </TR>
+                    <TR>
+                        <TD><TT>trans</TT></TD>
+                        <TD><TT><A HREF="../agascript.html">transform</A></TT></TD>
+                        <TD>The inverse transform matrix of the camera</TD>
+                    </TR>
+                    <TR>
+                        <TD><TT>mode</TT></TD>
+                        <TD><TT>int</TT></TD>
+                        <TD>
+                            The projection mode of the camera - <TT>1</TT> for perspective and <TT>0</TT> for
+                            orthographic.
+                        </TD>
+                    </TR>
+                </TABLE>
+            </P>
+            <H3>Return Value</H3>
+            <P>
+                N/A
+            </P>
+            <H3>Description</H3>
+            <P>
+                Sets the camera projection mode and position for subsequent rendering. This can be used to manipulate
+                the apparent position of static objects or for rendering UI elements separately to a 3D world.
+            </P>
+            <H3>Example</H3>
+            <P>
+                <CODE>
+                    <TABLE>
+                        <TR>
+                            <TD>
+                                <PRE>
+import agan
+import aga
+
+class game():
+    def create(self):
+        # Default to world origin.
+        self.trans = aga.transform().create()
+        return self
+    #
+    def update(self):
+        agan.setcam(self.trans, 1)
+        # Move along +x
+        self.trans.pos[0] = self.trans.pos[0] + 0.1f
+                                </PRE>
+                            </TD>
+                        </TR>
+                    </TABLE>
+                </CODE>
+            </P>
+            <HR>
+        </CENTER>
+    </BODY>
+</HTML>

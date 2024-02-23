@@ -1,0 +1,167 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Copyright (C) 2023 Emily "TTG" Banerjee <prs.ttg+aga@pm.me> -->
+
+<!DOCTYPE
+    HTML
+    PUBLIC
+    "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<HTML LANG="EN">
+    <HEAD>
+        <TITLE>AftGangAglay</TITLE>
+        <LINK
+            REL="ICON"
+            TYPE="IMAGE/SVG"
+            HREF="https://raw.githubusercontent.com/AftGangAglay/AftGangAglay/trunk/res/aga.svg">
+
+        <META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH">
+        <META CHARSET="UTF-8">
+    </HEAD>
+    <BODY>
+        <CENTER>
+            <H1>AftGangAglay Documentation</H1>
+            <HR>
+            <H2>Configuration File</H2>
+            <P>
+                The project configuration file (<TT>aga.sgml</TT> by default) is written using SGML with a very simple
+                DTD. This means the configs resemble a highly simplified version of XML.
+            </P>
+            <P>
+                A sample document might look like this:
+                <CODE>
+                    <TABLE>
+                        <TR>
+                            <TD>
+                                <PRE>
+&lt;root&gt;
+    &lt;item name="Category"&gt;
+        &lt;item name="Option1" type="String"&gt;
+            Hello, world!
+        &lt;/item&gt;
+        &lt;item name="Option2" type="Float"&gt;
+            0.23f
+        &lt;/item&gt;
+        &lt;item name="Option3" type="Integer"&gt;
+            42
+        &lt;/item&gt;
+    &lt;/item&gt;
+&lt;/root&gt;
+                                </PRE>
+                            </TD>
+                        </TR>
+                    </TABLE>
+                </CODE>
+                In documentation, <TT>Option1</TT> here would be referred to as <TT>Category.Option1</TT>.
+            </P>
+            <P>
+                Applications can access this configuration through the
+                <TT><A HREF="funcs/getconf.html">getconf</A></TT> function, and thus it can and should be used for
+                storing all application-specific configuration alongside the built-in options.
+            </P>
+            <H2>Built-In Options</H2>
+            <P>
+                There are several options which AftGangAglay directly references from this file. These compose project
+                configuration and are generally how the engine is informed of how to run your executable. These are
+                detailed below:
+                <TABLE>
+                    <TR>
+                        <TD><EM>Key</EM></TD>
+                        <TD><EM>Type</EM></TD>
+                        <TD><EM>Default</EM></TD>
+                        <TD><EM>Description</EM></TD>
+                    </TR>
+                    <TR>
+                        <TD><STRONG>General</STRONG></TD>
+                    </TR>
+                    <TR>
+                        <TD><TT><PRE>   General.Version</PRE></TT></TD>
+                        <TD><TT>String</TT></TD>
+                        <TD>Executing engine version</TD>
+                        <TD>
+                            The version of the engine the project is written for. This should be updated by the
+                            application maintainer alongside engine updates if neccesary.
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD><STRONG>Display</STRONG></TD>
+                    </TR>
+                    <TR>
+                        <TD><TT><PRE>   Display.Width</PRE></TT></TD>
+                        <TD><TT>Integer</TT></TD>
+                        <TD><TT>640</TT></TD>
+                        <TD>
+                            The width of the main application window.
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD><TT><PRE>   Display.Height</PRE></TT></TD>
+                        <TD><TT>Integer</TT></TD>
+                        <TD><TT>480</TT></TD>
+                        <TD>
+                            The height of the main application window.
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD><TT><PRE>   Display.FOV</PRE></TT></TD>
+                        <TD><TT>Float</TT></TD>
+                        <TD><TT>90.0f</TT></TD>
+                        <TD>
+                            The FOV to use when creating perspective projection matrices.
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD><STRONG>Audio</STRONG></TD>
+                    </TR>
+                    <TR>
+                        <TD><TT><PRE>   Audio.Enabled</PRE></TT></TD>
+                        <TD><TT>Integer</TT></TD>
+                        <TD><TT>1</TT></TD>
+                        <TD>
+                            Whether the audio engine should be enabled.
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD><TT><PRE>   Audio.Device</PRE></TT></TD>
+                        <TD><TT>String</TT></TD>
+                        <TD><TT>/dev/dsp1</TT></TD>
+                        <TD>
+                            Which DSP audio device to use.
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD><STRONG>Script</STRONG></TD>
+                    </TR>
+                    <TR>
+                        <TD><TT><PRE>   Script.Startup</PRE></TT></TD>
+                        <TD><TT>String</TT></TD>
+                        <TD><TT>script/main.py</TT></TD>
+                        <TD>
+                            The relative path to the main startup script for the application.
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD><TT><PRE>   Script.Path</PRE></TT></TD>
+                        <TD><TT>String</TT></TD>
+                        <TD><TT>script</TT></TD>
+                        <TD>
+                            The list of search paths for Python modules, separated by <TT>:</TT>.
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD><STRONG>Development</STRONG></TD>
+                    </TR>
+                    <TR>
+                        <TD><TT><PRE>   Development.PreHook</PRE></TT></TD>
+                        <TD><TT>String</TT></TD>
+                        <TD><TT></TT></TD>
+                        <TD>
+                            A command to be executed on startup when using a debug build of the engine. This is not
+                            enabled in release builds to avoid unintentional errors/executions when in distribution.
+                        </TD>
+                    </TR>
+                </TABLE>
+            </P>
+            <HR>
+        </CENTER>
+    </BODY>
+</HTML>
