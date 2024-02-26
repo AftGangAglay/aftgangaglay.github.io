@@ -21,7 +21,7 @@
         <CENTER>
             <H1>AftGangAglay Documentation</H1>
             <HR>
-            <H2><TT>fogparam</TT></H2>
+            <H2><TT>bitshl</TT></H2>
             <H3>Parameters</H3>
             <P>
                 <TABLE>
@@ -31,47 +31,35 @@
                         <TD><EM>Description</EM></TD>
                     </TR>
                     <TR>
-                        <TD><TT>param</TT></TD>
-                        <TD><TT>float[]</TT></TD>
-                        <TD>
-                            The fog parameter data.
-                        </TD>
+                        <TD><TT>lhs</TT></TD>
+                        <TD><TT>int</TT></TD>
+                        <TD>The left hand side of the operation</TD>
+                    </TR>
+                    <TR>
+                        <TD><TT>rhs</TT></TD>
+                        <TD><TT>int</TT></TD>
+                        <TD>The right hand side of the operation</TD>
                     </TR>
                 </TABLE>
             </P>
             <H3>Return Value</H3>
             <P>
-                N/A
-            </P>
-            <H3>Description</H3>
-            <P>
-                Sets graphical fog parameters. The fog feature is always enabled, so to hide the effect set the
-                <TT>density</TT> parameter to <TT>0.0</TT>.
-            </P>
-            <P>
-                The parameters are formatted as follows:
                 <TABLE>
                     <TR>
-                        <TD><EM>Index</EM></TD>
-                        <TD><EM>Name</EM></TD>
+                        <TD><EM>Type</EM></TD>
                         <TD><EM>Description</EM></TD>
                     </TR>
                     <TR>
-                        <TD><TT>0</TT></TD>
-                        <TD><TT>density</TT></TD>
-                        <TD>Fog density, normalized</TD>
+                        <TD><TT>int</TT></TD>
+                        <TD>
+                            The result of the operation
+                        </TD>
                     </TR>
-                    <TR>
-                        <TD><TT>1</TT></TD>
-                        <TD><TT>start</TT></TD>
-                        <TD>Fog start distance</TD>
-                    </TR>
-                    <TR>
-                        <TD><TT>2</TT></TD>
-                        <TD><TT>end</TT></TD>
-                        <TD>Fog end distance</TD>
-                    </TR>
-                </TABLE>
+                </TABLE>                
+            </P>
+            <H3>Description</H3>
+            <P>
+                Performs the operation <TT>a &lt;&lt; b</TT> and returns the result.
             </P>
             <H3>Example</H3>
             <P>
@@ -84,10 +72,11 @@ import agan
 
 class game():
     def create(self):
+        agan.log(agan.bitshl(1, 4))
         return self
     #
     def update(self):
-        agan.fogparam([ 0.5, 1.0, 10.0 ])
+        pass
     #
     def close(self):
         pass

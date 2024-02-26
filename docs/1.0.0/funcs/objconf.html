@@ -21,9 +21,9 @@
         <CENTER>
             <H1>AftGangAglay Documentation</H1>
             <HR>
-            <H2><TT>getconf</TT></H2>
+            <H2><TT>inobj</TT></H2>
             <EM>
-                Note: It is advised that you read the <A HREF="../config.html">configuration documentation</A> before
+                Note: It is advised that you read the <A HREF="../object.html">object documentation</A> before
                 this page in order to familiarise yourself with relevant terms and concepts.
             </EM>
             <H3>Parameters</H3>
@@ -33,6 +33,11 @@
                         <TD><EM>Parameter</EM></TD>
                         <TD><EM>Type</EM></TD>
                         <TD><EM>Description</EM></TD>
+                    </TR>
+                    <TR>
+                        <TD><TT>object</TT></TD>
+                        <TD><TT>nativeptr</TT></TD>
+                        <TD>The object whose config to get</TD>
                     </TR>
                     <TR>
                         <TD><TT>path</TT></TD>
@@ -75,7 +80,7 @@
             </P>
             <H3>Description</H3>
             <P>
-                Returns the relevant configuration value from the main configuration file. The <TT>path</TT> should
+                Returns the relevant configuration value from the object configuration file. The <TT>path</TT> should
                 specify a full list of categories and subcategories to identify the item, if neccesary.
             </P>
             <P>
@@ -93,15 +98,20 @@ import agan
 
 class game():
     def create(self):
-        ver = agan.getconf(['General', 'Version'])
-        agan.log("Running under AGA version " + ver)
+        self.obj = agan.mkobj('foo.sgml')
         return self
     #
     def update(self):
-        pass
+        if(agan.inobj(self.obj, [ 1.0, 0.0, 5.0 ], 1, 0)):
+            agan.text('Hello', [ 0.5, 0.5 ])
+        #
+        agan.log(agan.objtrans(self.obj))
+        agan.log(agan.objconf(self.obj, [ 'Model' ]))
+        #
+        agan.putobj(self.obj)
     #
     def close(self):
-        pass
+        agan.killobj(self.obj)
                                 </PRE>
                             </TD>
                         </TR>

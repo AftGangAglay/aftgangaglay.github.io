@@ -21,55 +21,51 @@
         <CENTER>
             <H1>AftGangAglay Documentation</H1>
             <HR>
-            <H2><TT>fogparam</TT></H2>
+            <H2><TT>mktrans</TT></H2>
             <H3>Parameters</H3>
+            <P>
+                N/A
+            </P>
+            <H3>Return Value</H3>
             <P>
                 <TABLE>
                     <TR>
-                        <TD><EM>Parameter</EM></TD>
                         <TD><EM>Type</EM></TD>
                         <TD><EM>Description</EM></TD>
                     </TR>
                     <TR>
-                        <TD><TT>param</TT></TD>
-                        <TD><TT>float[]</TT></TD>
+                        <TD><TT>dict</TT></TD>
                         <TD>
-                            The fog parameter data.
+                            The initialized transform
                         </TD>
                     </TR>
                 </TABLE>
             </P>
-            <H3>Return Value</H3>
-            <P>
-                N/A
-            </P>
             <H3>Description</H3>
             <P>
-                Sets graphical fog parameters. The fog feature is always enabled, so to hide the effect set the
-                <TT>density</TT> parameter to <TT>0.0</TT>.
+                Initializes a transform dictionary with the following default state:
             </P>
             <P>
-                The parameters are formatted as follows:
                 <TABLE>
                     <TR>
-                        <TD><EM>Index</EM></TD>
-                        <TD><EM>Name</EM></TD>
-                        <TD><EM>Description</EM></TD>
+                        <TD><EM>Aspect</EM></TD>
+                        <TD><EM>Key</EM></TD>
+                        <TD><EM>Value</EM></TD>
                     </TR>
                     <TR>
-                        <TD><TT>0</TT></TD>
-                        <TD><TT>density</TT></TD>
-                        <TD>Fog density, normalized</TD>
+                        <TD>Position</TD>
+                        <TD><TT>pos</TT></TD>
+                        <TD><TT>[ 0.0, 0.0, 0.0 ]</TT></TD>
                     </TR>
                     <TR>
-                        <TD><TT>1</TT></TD>
-                        <TD><TT>start</TT></TD>
-                        <TD>Fog start distance</TD>
+                        <TD>Rotation</TD>
+                        <TD><TT>rot</TT></TD>
+                        <TD><TT>[ 0.0, 0.0, 0.0 ]</TT></TD>
                     </TR>
                     <TR>
-                        <TD><TT>2</TT></TD>
-                        <TD><TT>end</TT></TD>
-                        <TD>Fog end distance</TD>
+                        <TD>Scale</TD>
+                        <TD><TT>scale</TT></TD>
+                        <TD><TT>[ 1.0, 1.0, 1.0 ]</TT></TD>
                     </TR>
                 </TABLE>
             </P>
@@ -84,10 +80,13 @@ import agan
 
 class game():
     def create(self):
+        t = agan.mktrans()
+        t['pos'][0] = 3.0
+        t['scale'][2] = 5.0
         return self
     #
     def update(self):
-        agan.fogparam([ 0.5, 1.0, 10.0 ])
+        pass
     #
     def close(self):
         pass

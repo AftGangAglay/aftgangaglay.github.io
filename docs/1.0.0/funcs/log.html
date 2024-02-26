@@ -21,7 +21,7 @@
         <CENTER>
             <H1>AftGangAglay Documentation</H1>
             <HR>
-            <H2><TT>fogparam</TT></H2>
+            <H2><TT>log</TT></H2>
             <H3>Parameters</H3>
             <P>
                 <TABLE>
@@ -31,11 +31,9 @@
                         <TD><EM>Description</EM></TD>
                     </TR>
                     <TR>
-                        <TD><TT>param</TT></TD>
-                        <TD><TT>float[]</TT></TD>
-                        <TD>
-                            The fog parameter data.
-                        </TD>
+                        <TD><TT>message</TT></TD>
+                        <TD><TT>string|any</TT></TD>
+                        <TD>The data to log</TD>
                     </TR>
                 </TABLE>
             </P>
@@ -45,33 +43,9 @@
             </P>
             <H3>Description</H3>
             <P>
-                Sets graphical fog parameters. The fog feature is always enabled, so to hide the effect set the
-                <TT>density</TT> parameter to <TT>0.0</TT>.
-            </P>
-            <P>
-                The parameters are formatted as follows:
-                <TABLE>
-                    <TR>
-                        <TD><EM>Index</EM></TD>
-                        <TD><EM>Name</EM></TD>
-                        <TD><EM>Description</EM></TD>
-                    </TR>
-                    <TR>
-                        <TD><TT>0</TT></TD>
-                        <TD><TT>density</TT></TD>
-                        <TD>Fog density, normalized</TD>
-                    </TR>
-                    <TR>
-                        <TD><TT>1</TT></TD>
-                        <TD><TT>start</TT></TD>
-                        <TD>Fog start distance</TD>
-                    </TR>
-                    <TR>
-                        <TD><TT>2</TT></TD>
-                        <TD><TT>end</TT></TD>
-                        <TD>Fog end distance</TD>
-                    </TR>
-                </TABLE>
+                Outputs data to a terminal if available, and to the logfile <TT>aga.log</TT>. If <TT>message</TT> is a
+                <TT>string</TT>, it is output as-is. If <TT>message</TT> is another type, it will use the default
+                Python formatter for that type.
             </P>
             <H3>Example</H3>
             <P>
@@ -84,10 +58,13 @@ import agan
 
 class game():
     def create(self):
+        agan.log('Hello, AGA!')
+        agan.log(3)
+        agan.log(agan.mktrans())
         return self
     #
     def update(self):
-        agan.fogparam([ 0.5, 1.0, 10.0 ])
+        pass
     #
     def close(self):
         pass
