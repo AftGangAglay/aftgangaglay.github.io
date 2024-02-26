@@ -32,12 +32,15 @@
                 detailed below.
                 <TABLE>
                     <TR>
-                        <TD><TT>-f [config]</TT></TD>
-                        <TD>Specifies an alternate application config path (default: <TT>./aga.sgml</TT>)</TD>
+                        <TD><TT>-f [respack]</TT></TD>
+                        <TD>
+                            Specifies an alternate <A HREF="agapack.html">resource pack</A> path
+                            (default: <TT>./agapack.raw</TT>)
+                        </TD>
                     </TR>
                     <TR>
                         <TD><TT>-A [dsp]</TT></TD>
-                        <TD>Specifies an alternate DSP audio device (default: <TT>/dev/dsp1</TT>)</TD>
+                        <TD><EM>Currently unused</EM></TD>
                     </TR>
                     <TR>
                         <TD><TT>-D [display]</TT></TD>
@@ -50,6 +53,10 @@
                         <TD><TT>-C [dir]</TT></TD>
                         <TD>Specifies the working directory to run from (default: <TT>./</TT>)</TD>
                     </TR>
+                    <TR>
+                        <TD><TT>-v</TT></TD>
+                        <TD>Run in verbose mode; Enables exhaustive debug output</TD>
+                    </TR>
                 </TABLE>
                 <BR>
                 Additionally, on X based systems the remainder of <TT>argv</TT> is passed through to XLib init with its
@@ -57,10 +64,9 @@
             </P>
             <H2>Application Packaging</H2>
             <P>
-                AftGangAglay applications can typically be shipped as a subset of the project source tree (typically
-                with development-specific files like the <TT>.git</TT> tree and IDE configuration removed) with the
-                <TT>aftgangaglay</TT> executable in the root directory, renamed to the appropriate application title
-                if desired.
+                AftGangAglay applications should be shipped as a single resource pack alongside a compiled engine
+                executable - optionally compiled as non-debug. There is currently no "integrated" method to set the
+                application icon, but you can replace <TT>res/aga.ico</TT> before build on Windows targets.
             </P>
             <HR>
         </CENTER>

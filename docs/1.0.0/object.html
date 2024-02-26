@@ -27,7 +27,14 @@
                 this page in order to familiarise yourself with relevant terms and concepts.
             </EM>
             <P>
-                AAA
+                Objects in AftGangAglay are managed graphical elements consisting of a model and a texture. Objects are
+                described by a config file similar to <TT>aga.conf</TT> which describes how they should be rendered,
+                as well as any additional user-specified configuration which can be retrieved using
+                <TT><A HREF="funcs/objconf.html">objconf</A></TT>.
+            </P>
+            <P>
+                Models are tagged with extra "bounding volume" information which is used by
+                <TT><A HREF="funcs/inobj.html">inobj</A></TT>.
             </P>
             <P>
                 A sample object might look like this:
@@ -37,10 +44,26 @@
                             <TD>
                                 <PRE>
 &lt;root&gt;
-    &lt;item name="Category"&gt;
-        &lt;item name="Option3" type="Integer"&gt;
-            42
-        &lt;/item&gt;
+    &lt;item name="Model" type="String"&gt;
+        model.obj.raw
+    &lt;/item&gt;
+    &lt;item name="Texture" type="String"&gt;
+        texture.tiff.raw
+    &lt;/item&gt;
+    &lt;item name="Position"&gt;
+        &lt;item name="X" type="Float"&gt;0.0&lt;/item&gt;
+        &lt;item name="Y" type="Float"&gt;0.0&lt;/item&gt;
+        &lt;item name="Z" type="Float"&gt;0.0&lt;/item&gt;
+    &lt;/item&gt;
+    &lt;item name="Rotation"&gt;
+        &lt;item name="X" type="Float"&gt;0.0&lt;/item&gt;
+        &lt;item name="Y" type="Float"&gt;0.0&lt;/item&gt;
+        &lt;item name="Z" type="Float"&gt;0.0&lt;/item&gt;
+    &lt;/item&gt;
+    &lt;item name="Scale"&gt;
+        &lt;item name="X" type="Float"&gt;1.0&lt;/item&gt;
+        &lt;item name="Y" type="Float"&gt;1.0&lt;/item&gt;
+        &lt;item name="Z" type="Float"&gt;1.0&lt;/item&gt;
     &lt;/item&gt;
 &lt;/root&gt;
                                 </PRE>
@@ -51,7 +74,7 @@
             </P>
             <H2>Built-In Options</H2>
             <P>
-                AAAAAAAAAA
+                There are several options which AftGangAglay directly references from this file, detailed below:
                 <TABLE>
                     <TR>
                         <TD><EM>Key</EM></TD>
@@ -60,14 +83,26 @@
                         <TD><EM>Description</EM></TD>
                     </TR>
                     <TR>
-                        <TD><TT>PPPPPP</TT></TD>
-                        <TD><TT>EEeeeee</TT></TD>
-                        <TD>ooOOOOO</TD>
+                        <TD><TT>Model</TT></TD>
+                        <TD><TT>String</TT></TD>
+                        <TD>N/A</TD>
                         <TD>
-                            fdskjfhs
+                            The path to the vertex data in the resource pack
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD><TT>Texture</TT></TD>
+                        <TD><TT>String</TT></TD>
+                        <TD>N/A</TD>
+                        <TD>
+                            The path to the texture data in the resource pack
                         </TD>
                     </TR>
                 </TABLE>
+            </P>
+            <P>
+                Additionally, the keys <TT>Position Rotation Scale</TT> should have 3 children of type <TT>float</TT>
+                named <TT>X Y Z</TT> providing the initial transform for the object.
             </P>
             <HR>
         </CENTER>

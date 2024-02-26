@@ -34,16 +34,26 @@
                             <TD>
                                 <PRE>
 &lt;root&gt;
-    &lt;item name="Category"&gt;
-        &lt;item name="Option1" type="String"&gt;
-            Hello, world!
-        &lt;/item&gt;
-        &lt;item name="Option2" type="Float"&gt;
-            0.23f
-        &lt;/item&gt;
-        &lt;item name="Option3" type="Integer"&gt;
-            42
-        &lt;/item&gt;
+    &lt;item name="Model" type="String"&gt;
+        model.obj.raw
+    &lt;/item&gt;
+    &lt;item name="Texture" type="String"&gt;
+        texture.tiff.raw
+    &lt;/item&gt;
+    &lt;item name="Position"&gt;
+        &lt;item name="X" type="Float"&gt;0.0&lt;/item&gt;
+        &lt;item name="Y" type="Float"&gt;0.0&lt;/item&gt;
+        &lt;item name="Z" type="Float"&gt;0.0&lt;/item&gt;
+    &lt;/item&gt;
+    &lt;item name="Rotation"&gt;
+        &lt;item name="X" type="Float"&gt;0.0&lt;/item&gt;
+        &lt;item name="Y" type="Float"&gt;0.0&lt;/item&gt;
+        &lt;item name="Z" type="Float"&gt;0.0&lt;/item&gt;
+    &lt;/item&gt;
+    &lt;item name="Scale"&gt;
+        &lt;item name="X" type="Float"&gt;1.0&lt;/item&gt;
+        &lt;item name="Y" type="Float"&gt;1.0&lt;/item&gt;
+        &lt;item name="Z" type="Float"&gt;1.0&lt;/item&gt;
     &lt;/item&gt;
 &lt;/root&gt;
                                 </PRE>
@@ -51,27 +61,16 @@
                         </TR>
                     </TABLE>
                 </CODE>
-                In documentation, <TT>Option1</TT> here would be referred to as <TT>Category.Option1</TT>.
-            </P>
-            <P>
-                Applications can access this configuration through the
-                <TT><A HREF="funcs/getconf.html">getconf</A></TT> function, and thus it can and should be used for
-                storing all application-specific configuration alongside the built-in options.
             </P>
             <H2>Built-In Options</H2>
             <P>
-                There are several options which AftGangAglay directly references from this file. These compose project
-                configuration and are generally how the engine is informed of how to run your executable. These are
-                detailed below:
+                There are several options which AftGangAglay directly references from this file, detailed below:
                 <TABLE>
                     <TR>
                         <TD><EM>Key</EM></TD>
                         <TD><EM>Type</EM></TD>
                         <TD><EM>Default</EM></TD>
                         <TD><EM>Description</EM></TD>
-                    </TR>
-                    <TR>
-                        <TD><STRONG>General</STRONG></TD>
                     </TR>
                     <TR>
                         <TD><TT><PRE>   General.Version</PRE></TT></TD>
@@ -107,6 +106,25 @@
                         <TD><TT>90.0f</TT></TD>
                         <TD>
                             The FOV to use when creating perspective projection matrices.
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD><STRONG>Audio</STRONG></TD>
+                    </TR>
+                    <TR>
+                        <TD><TT><PRE>   Audio.Enabled</PRE></TT></TD>
+                        <TD><TT>Integer</TT></TD>
+                        <TD><TT>1</TT></TD>
+                        <TD>
+                            Whether the audio engine should be enabled.
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD><TT><PRE>   Audio.Device</PRE></TT></TD>
+                        <TD><TT>String</TT></TD>
+                        <TD><TT>/dev/dsp1</TT></TD>
+                        <TD>
+                            Which DSP audio device to use.
                         </TD>
                     </TR>
                     <TR>
