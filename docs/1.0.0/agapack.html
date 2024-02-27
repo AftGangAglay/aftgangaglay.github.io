@@ -21,141 +21,54 @@
         <CENTER>
             <H1>AftGangAglay Documentation</H1>
             <HR>
-            <H2>Configuration File</H2>
+            <H2>Resource Pack</H2>
             <P>
-                The project configuration file (<TT>aga.sgml</TT> by default) is written using SGML with a very simple
-                DTD. This means the configs resemble a highly simplified version of XML.
+                AftGangAglay applications are consumed from a single archive which contains all the files required for
+                execution. Resources can have attached configuration which is processed by the <TT>aga-packgen</TT>
+                script for some predefined file types. This configuration is stored inside the resource pack in the
+                header.
             </P>
             <P>
-                A sample document might look like this:
-                <CODE>
-                    <TABLE>
-                        <TR>
-                            <TD>
-                                <PRE>
-&lt;root&gt;
-    &lt;item name="Model" type="String"&gt;
-        model.obj.raw
-    &lt;/item&gt;
-    &lt;item name="Texture" type="String"&gt;
-        texture.tiff.raw
-    &lt;/item&gt;
-    &lt;item name="Position"&gt;
-        &lt;item name="X" type="Float"&gt;0.0&lt;/item&gt;
-        &lt;item name="Y" type="Float"&gt;0.0&lt;/item&gt;
-        &lt;item name="Z" type="Float"&gt;0.0&lt;/item&gt;
-    &lt;/item&gt;
-    &lt;item name="Rotation"&gt;
-        &lt;item name="X" type="Float"&gt;0.0&lt;/item&gt;
-        &lt;item name="Y" type="Float"&gt;0.0&lt;/item&gt;
-        &lt;item name="Z" type="Float"&gt;0.0&lt;/item&gt;
-    &lt;/item&gt;
-    &lt;item name="Scale"&gt;
-        &lt;item name="X" type="Float"&gt;1.0&lt;/item&gt;
-        &lt;item name="Y" type="Float"&gt;1.0&lt;/item&gt;
-        &lt;item name="Z" type="Float"&gt;1.0&lt;/item&gt;
-    &lt;/item&gt;
-&lt;/root&gt;
-                                </PRE>
-                            </TD>
-                        </TR>
-                    </TABLE>
-                </CODE>
+                The exact specification of the resource pack is not outlined here, as it is intended to be a
+                transparent container and internal details are liable to change between versions without being
+                indicated as a breaking change.
             </P>
-            <H2>Built-In Options</H2>
             <P>
-                There are several options which AftGangAglay directly references from this file, detailed below:
                 <TABLE>
                     <TR>
-                        <TD><EM>Key</EM></TD>
                         <TD><EM>Type</EM></TD>
-                        <TD><EM>Default</EM></TD>
+                        <TD><EM>Distinction</EM></TD>
+                        <TD><EM>Generator</EM></TD>
                         <TD><EM>Description</EM></TD>
                     </TR>
                     <TR>
-                        <TD><TT><PRE>   General.Version</PRE></TT></TD>
-                        <TD><TT>String</TT></TD>
-                        <TD>Executing engine version</TD>
+                        <TD>Python Scripts</TD>
+                        <TD>Extension (<TT>.py</TT>)</TD>
+                        <TD>N/A</TD>
                         <TD>
-                            The version of the engine the project is written for. This should be updated by the
-                            application maintainer alongside engine updates if neccesary.
+                            Python scripts processed by <TT>aga-packgen</TT> will have an extra file terminator byte
+                            appended. This requires all Python sources to end with a newline.
                         </TD>
                     </TR>
                     <TR>
-                        <TD><STRONG>Display</STRONG></TD>
-                    </TR>
-                    <TR>
-                        <TD><TT><PRE>   Display.Width</PRE></TT></TD>
-                        <TD><TT>Integer</TT></TD>
-                        <TD><TT>640</TT></TD>
+                        <TD>Image Data</TD>
+                        <TD>Magic (<TT>0xA6A13600</TT>)</TD>
+                        <TD><TT>aga-imggen</TT></TD>
                         <TD>
-                            The width of the main application window.
+                            <TT>aga-imggen</TT> processes typical image formats into raw <TT>RGBA8</TT> image data, and
+                            appends their width and a magic indicator. This is consumed by <TT>aga-packgen</TT> to
+                            add a <TT>Width</TT> config tag.
                         </TD>
                     </TR>
                     <TR>
-                        <TD><TT><PRE>   Display.Height</PRE></TT></TD>
-                        <TD><TT>Integer</TT></TD>
-                        <TD><TT>480</TT></TD>
+                        <TD>Model Data</TD>
+                        <TD>Magic (<TT>0xA6A3D700</TT>)</TD>
+                        <TD><TT>aga-vertgen</TT></TD>
                         <TD>
-                            The height of the main application window.
-                        </TD>
-                    </TR>
-                    <TR>
-                        <TD><TT><PRE>   Display.FOV</PRE></TT></TD>
-                        <TD><TT>Float</TT></TD>
-                        <TD><TT>90.0f</TT></TD>
-                        <TD>
-                            The FOV to use when creating perspective projection matrices.
-                        </TD>
-                    </TR>
-                    <TR>
-                        <TD><STRONG>Audio</STRONG></TD>
-                    </TR>
-                    <TR>
-                        <TD><TT><PRE>   Audio.Enabled</PRE></TT></TD>
-                        <TD><TT>Integer</TT></TD>
-                        <TD><TT>1</TT></TD>
-                        <TD>
-                            Whether the audio engine should be enabled.
-                        </TD>
-                    </TR>
-                    <TR>
-                        <TD><TT><PRE>   Audio.Device</PRE></TT></TD>
-                        <TD><TT>String</TT></TD>
-                        <TD><TT>/dev/dsp1</TT></TD>
-                        <TD>
-                            Which DSP audio device to use.
-                        </TD>
-                    </TR>
-                    <TR>
-                        <TD><STRONG>Script</STRONG></TD>
-                    </TR>
-                    <TR>
-                        <TD><TT><PRE>   Script.Startup</PRE></TT></TD>
-                        <TD><TT>String</TT></TD>
-                        <TD><TT>script/main.py</TT></TD>
-                        <TD>
-                            The relative path to the main startup script for the application.
-                        </TD>
-                    </TR>
-                    <TR>
-                        <TD><TT><PRE>   Script.Path</PRE></TT></TD>
-                        <TD><TT>String</TT></TD>
-                        <TD><TT>script</TT></TD>
-                        <TD>
-                            The list of search paths for Python modules, separated by <TT>:</TT>.
-                        </TD>
-                    </TR>
-                    <TR>
-                        <TD><STRONG>Development</STRONG></TD>
-                    </TR>
-                    <TR>
-                        <TD><TT><PRE>   Development.PreHook</PRE></TT></TD>
-                        <TD><TT>String</TT></TD>
-                        <TD><TT></TT></TD>
-                        <TD>
-                            A command to be executed on startup when using a debug build of the engine. This is not
-                            enabled in release builds to avoid unintentional errors/executions when in distribution.
+                            <TT>aga-vertgen</TT> processes typical model formats into raw vertex data, and
+                            appends their bounding volume and a magic indicator. This is consumed by
+                            <TT>aga-packgen</TT> to add config tags relaying the bounding volume
+                            (<TT>Min(X|Y|Z)</TT> and <TT>Max(X|Y|Z)</TT>).
                         </TD>
                     </TR>
                 </TABLE>
