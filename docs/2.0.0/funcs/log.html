@@ -1,0 +1,80 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Copyright (C) 2023 Emily "TTG" Banerjee <prs.ttg+aga@pm.me> -->
+
+<!DOCTYPE
+    HTML
+    PUBLIC
+    "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<HTML LANG="EN">
+    <HEAD>
+        <TITLE>AftGangAglay</TITLE>
+        <LINK
+            REL="ICON"
+            TYPE="IMAGE/SVG"
+            HREF="https://raw.githubusercontent.com/AftGangAglay/AftGangAglay/trunk/res/aga.svg">
+
+        <META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH">
+        <META CHARSET="UTF-8">
+    </HEAD>
+    <BODY>
+        <CENTER>
+            <H1>AftGangAglay Documentation</H1>
+            <HR>
+            <H2><TT>log</TT></H2>
+            <H3>Parameters</H3>
+            <P>
+                <TABLE>
+                    <TR>
+                        <TD><EM>Parameter</EM></TD>
+                        <TD><EM>Type</EM></TD>
+                        <TD><EM>Description</EM></TD>
+                    </TR>
+                    <TR>
+                        <TD><TT>message</TT></TD>
+                        <TD><TT>string|any</TT></TD>
+                        <TD>The data to log</TD>
+                    </TR>
+                </TABLE>
+            </P>
+            <H3>Return Value</H3>
+            <P>
+                N/A
+            </P>
+            <H3>Description</H3>
+            <P>
+                Outputs data to a terminal if available, and to the logfile <TT>aga.log</TT>. If <TT>message</TT> is a
+                <TT>string</TT>, it is output as-is. If <TT>message</TT> is another type, it will use the default
+                Python formatter for that type.
+            </P>
+            <H3>Example</H3>
+            <P>
+                <CODE>
+                    <TABLE>
+                        <TR>
+                            <TD>
+                                <PRE>
+import agan
+
+class game():
+    def create(self):
+        agan.log('Hello, AGA!')
+        agan.log(3)
+        agan.log(agan.mktrans())
+        return self
+    #
+    def update(self):
+        pass
+    #
+    def close(self):
+        pass
+                                </PRE>
+                            </TD>
+                        </TR>
+                    </TABLE>
+                </CODE>
+            </P>
+            <HR>
+        </CENTER>
+    </BODY>
+</HTML>

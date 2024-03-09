@@ -1,0 +1,98 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Copyright (C) 2023 Emily "TTG" Banerjee <prs.ttg+aga@pm.me> -->
+
+<!DOCTYPE
+    HTML
+    PUBLIC
+    "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<HTML LANG="EN">
+    <HEAD>
+        <TITLE>AftGangAglay</TITLE>
+        <LINK
+            REL="ICON"
+            TYPE="IMAGE/SVG"
+            HREF="https://raw.githubusercontent.com/AftGangAglay/AftGangAglay/trunk/res/aga.svg">
+
+        <META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH">
+        <META CHARSET="UTF-8">
+    </HEAD>
+    <BODY>
+        <CENTER>
+            <H1>AftGangAglay Documentation</H1>
+            <HR>
+            <H2><TT>inobj</TT></H2>
+            <EM>
+                Note: It is advised that you read the <A HREF="../object.html">object documentation</A> before
+                this page in order to familiarise yourself with relevant terms and concepts.
+            </EM>
+            <H3>Parameters</H3>
+            <P>
+                <TABLE>
+                    <TR>
+                        <TD><EM>Parameter</EM></TD>
+                        <TD><EM>Type</EM></TD>
+                        <TD><EM>Description</EM></TD>
+                    </TR>
+                    <TR>
+                        <TD><TT>object</TT></TD>
+                        <TD><TT>nativeptr</TT></TD>
+                        <TD>The object whose transform to get</TD>
+                    </TR>
+                </TABLE>
+            </P>
+            <H3>Return Value</H3>
+            <P>
+                <TABLE>
+                    <TR>
+                        <TD><EM>Type</EM></TD>
+                        <TD><EM>Description</EM></TD>
+                    </TR>
+                    <TR>
+                        <TD><TT>dict</TT></TD>
+                        <TD>
+                            A reference to the object's transform
+                        </TD>
+                    </TR>
+                </TABLE>                
+            </P>
+            <H3>Description</H3>
+            <P>
+                Returns a reference to <TT>object</TT>'s transform. This can be modified to change the transform of the
+                underlying native object.
+            </P>
+            <H3>Example</H3>
+            <P>
+                <CODE>
+                    <TABLE>
+                        <TR>
+                            <TD>
+                                <PRE>
+import agan
+
+class game():
+    def create(self):
+        self.obj = agan.mkobj('foo.sgml')
+        return self
+    #
+    def update(self):
+        if(agan.inobj(self.obj, [ 1.0, 0.0, 5.0 ], 1, 0)):
+            agan.text('Hello', [ 0.5, 0.5 ])
+        #
+        agan.log(agan.objtrans(self.obj))
+        agan.log(agan.objconf(self.obj, [ 'Model' ]))
+        #
+        agan.putobj(self.obj)
+    #
+    def close(self):
+        agan.killobj(self.obj)
+                                </PRE>
+                            </TD>
+                        </TR>
+                    </TABLE>
+                </CODE>
+            </P>
+            <HR>
+        </CENTER>
+    </BODY>
+</HTML>

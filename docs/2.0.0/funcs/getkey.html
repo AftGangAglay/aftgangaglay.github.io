@@ -1,0 +1,229 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Copyright (C) 2023 Emily "TTG" Banerjee <prs.ttg+aga@pm.me> -->
+
+<!DOCTYPE
+    HTML
+    PUBLIC
+    "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<HTML LANG="EN">
+    <HEAD>
+        <TITLE>AftGangAglay</TITLE>
+        <LINK
+            REL="ICON"
+            TYPE="IMAGE/SVG"
+            HREF="https://raw.githubusercontent.com/AftGangAglay/AftGangAglay/trunk/res/aga.svg">
+
+        <META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH">
+        <META CHARSET="UTF-8">
+    </HEAD>
+    <BODY>
+        <CENTER>
+            <H1>AftGangAglay Documentation</H1>
+            <HR>
+            <H2><TT>getkey</TT></H2>
+            <H3>Parameters</H3>
+            <P>
+                <TABLE>
+                    <TR>
+                        <TD><EM>Parameter</EM></TD>
+                        <TD><EM>Type</EM></TD>
+                        <TD><EM>Description</EM></TD>
+                    </TR>
+                    <TR>
+                        <TD><TT>keycode</TT></TD>
+                        <TD><TT>int</TT></TD>
+                        <TD>
+                            The code of the key whose state should be read.
+                        </TD>
+                    </TR>
+                </TABLE>
+            </P>
+            <H3>Return Value</H3>
+            <P>
+                <TABLE>
+                    <TR>
+                        <TD><EM>Type</EM></TD>
+                        <TD><EM>Description</EM></TD>
+                    </TR>
+                    <TR>
+                        <TD><TT>int</TT></TD>
+                        <TD>
+                            The state of the requested key - <TT>True</TT> for held, <TT>False</TT> for released.
+                        </TD>
+                    </TR>
+                </TABLE>
+            </P>
+            <H3>Description</H3>
+            <P>
+                Fetches the current state of the key named by <TT>keycode</TT> - held or released. Keycodes refer to
+                physical keys and not characters, so modifiers are reported the same as others.
+
+                If the requested keycode is outside of the keymap bounds, <TT>None</TT> is instead returned.
+            </P>
+            <H3>Keycodes</H3>
+            <P>
+                This list is the subset of "basic" keycodes available for both Windows and X systems.
+                <TABLE>
+                    <TR>
+                        <TD><EM>Name</EM></TD>
+                        <TD><EM>Description</EM></TD>
+                    </TR>
+                    <TR><TD><TT>KEY_CANCEL</TT></TD><TD>Control-Break</TD></TR>
+                    <TR><TD><TT>KEY_BACKSPACE</TT></TD><TD>Backspace</TD></TR>
+                    <TR><TD><TT>KEY_CLEAR</TT></TD><TD>Clear Scroll</TD></TR>
+                    <TR><TD><TT>KEY_PAUSE</TT></TD><TD>Pause/Break</TD></TR>
+                    <TR><TD><TT>KEY_ESCAPE</TT></TD><TD>Escape</TD></TR>
+                    <TR><TD><TT>KEY_MENU</TT></TD><TD>Alt/Context Menu</TD></TR>
+                    <TR><TD><TT>KEY_TAB</TT></TD><TD>Tab</TD></TR>
+                    <TR><TD><TT>KEY_RETURN</TT></TD><TD>Return/Enter</TD></TR>
+                    <TR><TD><TT>KEY_CAPSLOCK</TT></TD><TD>Capslock</TD></TR>
+                    <TR><TD><TT>KEY_SHIFT_L</TT></TD><TD>Left Shift</TD></TR>
+                    <TR><TD><TT>KEY_SHIFT_R</TT></TD><TD>Right Shift</TD></TR>
+                    <TR><TD><TT>KEY_CONTROL_L</TT></TD><TD>Left Control</TD></TR>
+                    <TR><TD><TT>KEY_CONTROL_R</TT></TD><TD>Right Control</TD></TR>
+                    <TR><TD><TT>KEY_ALT_L</TT></TD><TD>Left Alt</TD></TR>
+                    <TR><TD><TT>KEY_ALT_R</TT></TD><TD>Right Alt</TD></TR>
+                    <TR><TD><TT>KEY_KANALOCK</TT></TD><TD>IME Kana Mode Lock</TD></TR>
+                    <TR><TD><TT>KEY_KANASHIFT</TT></TD><TD>IME Kana Mode Shift</TD></TR>
+                    <TR><TD><TT>KEY_HANGUL</TT></TD><TD>IME Hangul Mode Lock</TD></TR>
+                    <TR><TD><TT>KEY_HANJA</TT></TD><TD>IME Hanja Mode Lock</TD></TR>
+                    <TR><TD><TT>KEY_KANJI</TT></TD><TD>IME Kanji Mode Lock</TD></TR>
+                    <TR><TD><TT>KEY_SPACE</TT></TD><TD>Space</TD></TR>
+                    <TR><TD><TT>KEY_PRIOR</TT></TD><TD>Page Up</TD></TR>
+                    <TR><TD><TT>KEY_NEXT</TT></TD><TD>Page Down</TD></TR>
+                    <TR><TD><TT>KEY_END</TT></TD><TD>End</TD></TR>
+                    <TR><TD><TT>KEY_HOME</TT></TD><TD>Home</TD></TR>
+                    <TR><TD><TT>KEY_LEFT</TT></TD><TD>Left Arrow</TD></TR>
+                    <TR><TD><TT>KEY_UP</TT></TD><TD>Up Arrow</TD></TR>
+                    <TR><TD><TT>KEY_RIGHT</TT></TD><TD>Right Arrow</TD></TR>
+                    <TR><TD><TT>KEY_DOWN</TT></TD><TD>Down Arrow</TD></TR>
+                    <TR><TD><TT>KEY_SELECT</TT></TD><TD>Select</TD></TR>
+                    <TR><TD><TT>KEY_PRINT</TT></TD><TD>Print</TD></TR>
+                    <TR><TD><TT>KEY_EXECUTE</TT></TD><TD>Execute</TD></TR>
+                    <TR><TD><TT>KEY_INSERT</TT></TD><TD>Insert</TD></TR>
+                    <TR><TD><TT>KEY_DELETE</TT></TD><TD>Delete</TD></TR>
+                    <TR><TD><TT>KEY_HELP</TT></TD><TD>Help/F1</TD></TR>
+                    <TR><TD><TT>KEY_0</TT></TD><TD>0</TD></TR>
+                    <TR><TD><TT>KEY_1</TT></TD><TD>1</TD></TR>
+                    <TR><TD><TT>KEY_2</TT></TD><TD>2</TD></TR>
+                    <TR><TD><TT>KEY_3</TT></TD><TD>3</TD></TR>
+                    <TR><TD><TT>KEY_4</TT></TD><TD>4</TD></TR>
+                    <TR><TD><TT>KEY_5</TT></TD><TD>5</TD></TR>
+                    <TR><TD><TT>KEY_6</TT></TD><TD>6</TD></TR>
+                    <TR><TD><TT>KEY_7</TT></TD><TD>7</TD></TR>
+                    <TR><TD><TT>KEY_8</TT></TD><TD>8</TD></TR>
+                    <TR><TD><TT>KEY_9</TT></TD><TD>9</TD></TR>
+                    <TR><TD><TT>KEY_A</TT></TD><TD>A</TD></TR>
+                    <TR><TD><TT>KEY_B</TT></TD><TD>B</TD></TR>
+                    <TR><TD><TT>KEY_C</TT></TD><TD>C</TD></TR>
+                    <TR><TD><TT>KEY_D</TT></TD><TD>D</TD></TR>
+                    <TR><TD><TT>KEY_E</TT></TD><TD>E</TD></TR>
+                    <TR><TD><TT>KEY_F</TT></TD><TD>F</TD></TR>
+                    <TR><TD><TT>KEY_G</TT></TD><TD>G</TD></TR>
+                    <TR><TD><TT>KEY_H</TT></TD><TD>H</TD></TR>
+                    <TR><TD><TT>KEY_I</TT></TD><TD>I</TD></TR>
+                    <TR><TD><TT>KEY_J</TT></TD><TD>J</TD></TR>
+                    <TR><TD><TT>KEY_K</TT></TD><TD>K</TD></TR>
+                    <TR><TD><TT>KEY_L</TT></TD><TD>L</TD></TR>
+                    <TR><TD><TT>KEY_M</TT></TD><TD>M</TD></TR>
+                    <TR><TD><TT>KEY_N</TT></TD><TD>N</TD></TR>
+                    <TR><TD><TT>KEY_O</TT></TD><TD>O</TD></TR>
+                    <TR><TD><TT>KEY_P</TT></TD><TD>P</TD></TR>
+                    <TR><TD><TT>KEY_Q</TT></TD><TD>Q</TD></TR>
+                    <TR><TD><TT>KEY_R</TT></TD><TD>R</TD></TR>
+                    <TR><TD><TT>KEY_S</TT></TD><TD>S</TD></TR>
+                    <TR><TD><TT>KEY_T</TT></TD><TD>T</TD></TR>
+                    <TR><TD><TT>KEY_U</TT></TD><TD>U</TD></TR>
+                    <TR><TD><TT>KEY_V</TT></TD><TD>V</TD></TR>
+                    <TR><TD><TT>KEY_W</TT></TD><TD>W</TD></TR>
+                    <TR><TD><TT>KEY_X</TT></TD><TD>X</TD></TR>
+                    <TR><TD><TT>KEY_Y</TT></TD><TD>Y</TD></TR>
+                    <TR><TD><TT>KEY_Z</TT></TD><TD>Z</TD></TR>
+                    <TR><TD><TT>KEY_META_L</TT></TD><TD>Left Meta/Windows/Command</TD></TR>
+                    <TR><TD><TT>KEY_META_R</TT></TD><TD>Right Meta/Windows/Command</TD></TR>
+                    <TR><TD><TT>KEY_SUPER_L</TT></TD><TD>Left Super/Windows/Command</TD></TR>
+                    <TR><TD><TT>KEY_SUPER_R</TT></TD><TD>Right Super/Windows/Command</TD></TR>
+                    <TR><TD><TT>KEY_KP_0</TT></TD><TD>Keypad 0</TD></TR>
+                    <TR><TD><TT>KEY_KP_1</TT></TD><TD>Keypad 1</TD></TR>
+                    <TR><TD><TT>KEY_KP_2</TT></TD><TD>Keypad 2</TD></TR>
+                    <TR><TD><TT>KEY_KP_3</TT></TD><TD>Keypad 3</TD></TR>
+                    <TR><TD><TT>KEY_KP_4</TT></TD><TD>Keypad 4</TD></TR>
+                    <TR><TD><TT>KEY_KP_5</TT></TD><TD>Keypad 5</TD></TR>
+                    <TR><TD><TT>KEY_KP_6</TT></TD><TD>Keypad 6</TD></TR>
+                    <TR><TD><TT>KEY_KP_7</TT></TD><TD>Keypad 7</TD></TR>
+                    <TR><TD><TT>KEY_KP_8</TT></TD><TD>Keypad 8</TD></TR>
+                    <TR><TD><TT>KEY_KP_9</TT></TD><TD>Keypad 9</TD></TR>
+                    <TR><TD><TT>KEY_KP_MULTIPLY</TT></TD><TD>Keypad Multiply/Asterisk</TD></TR>
+                    <TR><TD><TT>KEY_KP_ADD</TT></TD><TD>Keypad Add/Plus</TD></TR>
+                    <TR><TD><TT>KEY_KP_SEPARATOR</TT></TD><TD>Keypad Separator/Decimal</TD></TR>
+                    <TR><TD><TT>KEY_KP_SUBTRACT</TT></TD><TD>Keypad Subtract/Minus/Dash</TD></TR>
+                    <TR><TD><TT>KEY_KP_DECIMAL</TT></TD><TD>Keypad Decimal</TD></TR>
+                    <TR><TD><TT>KEY_KP_DIVIDE</TT></TD><TD>Keypad Divide/Slash</TD></TR>
+                    <TR><TD><TT>KEY_F1</TT></TD><TD>F1</TD></TR>
+                    <TR><TD><TT>KEY_F2</TT></TD><TD>F2</TD></TR>
+                    <TR><TD><TT>KEY_F3</TT></TD><TD>F3</TD></TR>
+                    <TR><TD><TT>KEY_F4</TT></TD><TD>F4</TD></TR>
+                    <TR><TD><TT>KEY_F5</TT></TD><TD>F5</TD></TR>
+                    <TR><TD><TT>KEY_F6</TT></TD><TD>F6</TD></TR>
+                    <TR><TD><TT>KEY_F7</TT></TD><TD>F7</TD></TR>
+                    <TR><TD><TT>KEY_F8</TT></TD><TD>F8</TD></TR>
+                    <TR><TD><TT>KEY_F9</TT></TD><TD>F9</TD></TR>
+                    <TR><TD><TT>KEY_F10</TT></TD><TD>F10</TD></TR>
+                    <TR><TD><TT>KEY_F11</TT></TD><TD>F11</TD></TR>
+                    <TR><TD><TT>KEY_F12</TT></TD><TD>F12</TD></TR>
+                    <TR><TD><TT>KEY_F13</TT></TD><TD>F13</TD></TR>
+                    <TR><TD><TT>KEY_F14</TT></TD><TD>F14</TD></TR>
+                    <TR><TD><TT>KEY_F15</TT></TD><TD>F15</TD></TR>
+                    <TR><TD><TT>KEY_F16</TT></TD><TD>F16</TD></TR>
+                    <TR><TD><TT>KEY_F17</TT></TD><TD>F17</TD></TR>
+                    <TR><TD><TT>KEY_F18</TT></TD><TD>F18</TD></TR>
+                    <TR><TD><TT>KEY_F19</TT></TD><TD>F19</TD></TR>
+                    <TR><TD><TT>KEY_F20</TT></TD><TD>F20</TD></TR>
+                    <TR><TD><TT>KEY_F21</TT></TD><TD>F21</TD></TR>
+                    <TR><TD><TT>KEY_F22</TT></TD><TD>F22</TD></TR>
+                    <TR><TD><TT>KEY_F23</TT></TD><TD>F23</TD></TR>
+                    <TR><TD><TT>KEY_F24</TT></TD><TD>F24</TD></TR>
+                    <TR><TD><TT>KEY_NUMLOCK</TT></TD><TD>Numlock</TD></TR>
+                    <TR><TD><TT>KEY_SCROLLLOCK</TT></TD><TD>Scroll Lock</TD></TR>
+                    <TR><TD><TT>KEY_ATTN</TT></TD><TD>Interrupt Attention/PA1/Escape</TD></TR>
+                    <TR><TD><TT>KEY_EXSELECT</TT></TD><TD>Extended Select/Extension Mode Shift</TD></TR>
+                    <TR><TD><TT>KEY_CURSORSELECT</TT></TD><TD>Cursor Select</TD></TR>
+                    <TR><TD><TT>KEY_PLAY</TT></TD><TD>Play</TD></TR>
+                    <TR><TD><TT>KEY_ERASEEOF</TT></TD><TD>Erase EOF</TD></TR>
+                    <TR><TD><TT>KEY_PA1</TT></TD><TD>PA1</TD></TR>
+                </TABLE>
+            </P>
+            <H3>Example</H3>
+            <P>
+                <CODE>
+                    <TABLE>
+                        <TR>
+                            <TD>
+                                <PRE>
+import agan
+
+class game():
+    def create(self):
+        return self
+    #
+    def update(self):
+        if(agan.getkey(agan.KEY_W)):
+            agan.log("The W key is held!")
+        elif(agan.getkey(agan.KEY_L)):
+            agan.log("The L key is held!")
+        else:
+            agan.log("Neither of my keys are held :(")
+    #
+    def close(self):
+        pass
+                                </PRE>
+                            </TD>
+                        </TR>
+                    </TABLE>
+                </CODE>
+            </P>
+            <HR>
+        </CENTER>
+    </BODY>
+</HTML>
