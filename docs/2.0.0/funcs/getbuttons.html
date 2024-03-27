@@ -21,7 +21,8 @@
         <CENTER>
             <H1>AftGangAglay Documentation</H1>
             <HR>
-            <H2><TT>getmotion</TT></H2>
+            <H2><TT>getbuttons</TT></H2>
+            <EM>New in 2.2.0</EM>
             <H3>Parameters</H3>
             <P>
                 N/A
@@ -34,18 +35,27 @@
                         <TD><EM>Description</EM></TD>
                     </TR>
                     <TR>
-                        <TD><TT>float[2]</TT></TD>
+                        <TD><TT>int[3]</TT></TD>
                         <TD>
-                            A list of 2 floats containing the mouse cursor X and Y motion.
+                            A list of 3 ints corresponding to the left, right and middle mouse button states.
                         </TD>
                     </TR>
                 </TABLE>
             </P>
             <H3>Description</H3>
             <P>
-                Retrieves the mouse cursor motion this frame in terms of X and Y deltas. The exact metric reported
-                varies by platform.
+                Retrieves the mouse button states this frame. All values where the button is held are truthy.
             </P>
+            <H3>States</H3>
+            <TABLE>
+                <TR>
+                    <TD><EM>Name</EM></TD>
+                    <TD><EM>Description</EM></TD>
+                </TR>
+                <TR><TD><TT>CLICK</TT></TD><TD>Button became pressed this frame</TD></TR>
+                <TR><TD><TT>DOWN</TT></TD><TD>Button is pressed</TD></TR>
+                <TR><TD><TT>UP</TT></TD><TD>Button is released</TD></TR>
+            </TABLE>
             <H3>Example</H3>
             <P>
                 <CODE>
@@ -60,21 +70,13 @@ class game():
         return self
     #
     def update(self):
-        m = agan.getmotion()
+        b = agan.getbuttons()
         #
-        if(m[0] > 0.0):
-            agan.log("Mouse is moving right")
-        elif(m[0] &lt; 0.0):
-            agan.log("Mouse is moving left")
-        else:
-            agan.log("Mouse is not moving left or right")
+        if(b[0] == agan.CLICK): agan.log('LMB was clicked')
         #
-        if(m[1] > 0.0):
-            agan.log("Mouse is moving down")
-        elif(m[1] &lt; 0.0):
-            agan.log("Mouse is moving up")
-        else:
-            agan.log("Mouse is not moving up or down")
+        if(b[1] == agan.DOWN): agan.log('RMB is held')
+        #
+        if(b[2] == agan.UP): agan.log('MMB is not held')
     #
     def close(self):
         pass
