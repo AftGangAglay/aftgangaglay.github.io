@@ -21,7 +21,8 @@
 		<CENTER>
 			<H1>AftGangAglay Documentation</H1>
 			<HR>
-			<H2><TT>text</TT></H2>
+			<H2><TT>line3d</TT></H2>
+			<EM>New in 2.2.0</EM>
 			<H3>Parameters</H3>
 			<P>
 				<TABLE>
@@ -31,17 +32,24 @@
 						<TD><EM>Description</EM></TD>
 					</TR>
 					<TR>
-						<TD><TT>message</TT></TD>
-						<TD><TT>string</TT></TD>
-						<TD>The text data to display.</TD>
+						<TD><TT>start</TT></TD>
+						<TD><TT>float[3]</TT></TD>
+						<TD>The start world coordinate for the line.</TD>
 					</TR>
 					<TR>
-						<TD><TT>pos</TT></TD>
-						<TD><TT>float[]</TT></TD>
-						<TD>
-							The X and Y position for the text in normalized screen coordinates. i.e. (0, 0) being the
-							centre of the screen.
-						</TD>
+						<TD><TT>end</TT></TD>
+						<TD><TT>float[3]</TT></TD>
+						<TD>The end world coordinate for the line.</TD>
+					</TR>
+					<TR>
+						<TD><TT>pt</TT></TD>
+						<TD><TT>float</TT></TD>
+						<TD>The line width.</TD>
+					</TR>
+					<TR>
+						<TD><TT>col</TT></TD>
+						<TD><TT>float[3]</TT></TD>
+						<TD>The color of the line.</TD>
 					</TR>
 				</TABLE>
 			</P>
@@ -51,7 +59,7 @@
 			</P>
 			<H3>Description</H3>
 			<P>
-				Displays white text in screenspace using the system's default font.
+				Renders a 3D line in world space between two points.
 			</P>
 			<H3>Example</H3>
 			<P>
@@ -67,7 +75,8 @@ class game():
 		return self
 	#
 	def update(self):
-		agan.text('Hello, AGA!', [ 0.5, 0.5 ])
+		# Red, 2.5 width, from origin to x=1.
+		agan.line3d([ 0.0, 0.0, 0.0 ], [ 1.0, 0.0, 0.0 ], 2.5, [ 1.0, 0.0, 0.0 ])
 	#
 	def close(self):
 		pass

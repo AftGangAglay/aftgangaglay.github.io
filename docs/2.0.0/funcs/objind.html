@@ -21,7 +21,14 @@
 		<CENTER>
 			<H1>AftGangAglay Documentation</H1>
 			<HR>
-			<H2><TT>text</TT></H2>
+			<H2><TT>objind</TT></H2>
+			<EM>New in 2.2.0</EM>
+			<P>
+				<EM>
+					Note: It is advised that you read the <A HREF="../object.html">object documentation</A> before
+					this page in order to familiarise yourself with relevant terms and concepts.
+				</EM>
+			</P>
 			<H3>Parameters</H3>
 			<P>
 				<TABLE>
@@ -31,27 +38,32 @@
 						<TD><EM>Description</EM></TD>
 					</TR>
 					<TR>
-						<TD><TT>message</TT></TD>
-						<TD><TT>string</TT></TD>
-						<TD>The text data to display.</TD>
-					</TR>
-					<TR>
-						<TD><TT>pos</TT></TD>
-						<TD><TT>float[]</TT></TD>
-						<TD>
-							The X and Y position for the text in normalized screen coordinates. i.e. (0, 0) being the
-							centre of the screen.
-						</TD>
+						<TD><TT>object</TT></TD>
+						<TD><TT>nativeptr</TT></TD>
+						<TD>The object whose index to get</TD>
 					</TR>
 				</TABLE>
 			</P>
 			<H3>Return Value</H3>
 			<P>
-				N/A
+				<TABLE>
+					<TR>
+						<TD><EM>Type</EM></TD>
+						<TD><EM>Description</EM></TD>
+					</TR>
+					<TR>
+						<TD><TT>int</TT></TD>
+						<TD>
+							The object's index
+						</TD>
+					</TR>
+				</TABLE>				
 			</P>
 			<H3>Description</H3>
 			<P>
-				Displays white text in screenspace using the system's default font.
+				Returns <TT>object</TT>'s unique index. This differs from the handle and aims to occupy a 24-bit
+				integer to be used for picking. This index is stored in model vertices' color field which can be
+				accessed with <TT><A HREF="getpix.html">getpix</A></TT> when texture mapping is disabled.
 			</P>
 			<H3>Example</H3>
 			<P>
@@ -64,10 +76,11 @@ import agan
 
 class game():
 	def create(self):
+		self.obj = agan.mkobj('foo.sgml')
 		return self
 	#
 	def update(self):
-		agan.text('Hello, AGA!', [ 0.5, 0.5 ])
+		agan.log(agan.objind(self.obj))
 	#
 	def close(self):
 		pass

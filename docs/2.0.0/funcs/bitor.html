@@ -21,7 +21,7 @@
 		<CENTER>
 			<H1>AftGangAglay Documentation</H1>
 			<HR>
-			<H2><TT>text</TT></H2>
+			<H2><TT>bitor</TT></H2>
 			<H3>Parameters</H3>
 			<P>
 				<TABLE>
@@ -31,27 +31,31 @@
 						<TD><EM>Description</EM></TD>
 					</TR>
 					<TR>
-						<TD><TT>message</TT></TD>
-						<TD><TT>string</TT></TD>
-						<TD>The text data to display.</TD>
-					</TR>
-					<TR>
-						<TD><TT>pos</TT></TD>
-						<TD><TT>float[]</TT></TD>
-						<TD>
-							The X and Y position for the text in normalized screen coordinates. i.e. (0, 0) being the
-							centre of the screen.
-						</TD>
+						<TD><TT>args</TT></TD>
+						<TD><TT>int[]</TT></TD>
+						<TD>A list of ints</TD>
 					</TR>
 				</TABLE>
 			</P>
 			<H3>Return Value</H3>
 			<P>
-				N/A
+				<TABLE>
+					<TR>
+						<TD><EM>Type</EM></TD>
+						<TD><EM>Description</EM></TD>
+					</TR>
+					<TR>
+						<TD><TT>int</TT></TD>
+						<TD>
+							The result of the operation
+						</TD>
+					</TR>
+				</TABLE>				
 			</P>
 			<H3>Description</H3>
 			<P>
-				Displays white text in screenspace using the system's default font.
+				Performs the operation <TT>a | b | c ...</TT> between all elements in <TT>args</TT> and returns the
+				result.
 			</P>
 			<H3>Example</H3>
 			<P>
@@ -64,10 +68,11 @@ import agan
 
 class game():
 	def create(self):
+		agan.log(agan.bitor([ 1, 2, 16, 128 ]))
 		return self
 	#
 	def update(self):
-		agan.text('Hello, AGA!', [ 0.5, 0.5 ])
+		pass
 	#
 	def close(self):
 		pass
