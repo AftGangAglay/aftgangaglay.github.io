@@ -1,0 +1,113 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Copyright (C) 2023 Emily "TTG" Banerjee <prs.ttg+aga@pm.me> -->
+
+<!DOCTYPE
+	HTML
+	PUBLIC
+	"-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<HTML LANG="EN">
+	<HEAD>
+		<TITLE>AftGangAglay</TITLE>
+		<LINK
+			REL="ICON"
+			TYPE="IMAGE/SVG"
+			HREF="https://raw.githubusercontent.com/AftGangAglay/AftGangAglay/trunk/res/aga.svg">
+
+		<META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH">
+		<META CHARSET="UTF-8">
+	</HEAD>
+	<BODY>
+		<CENTER>
+			<H1>AftGangAglay Documentation</H1>
+			<HR>
+			<H2><TT>setflag</TT></H2>
+			<EM>New in 2.2.0</EM>
+			<H3>Parameters</H3>
+			<P>
+				<TABLE>
+					<TR>
+						<TD><EM>Parameter</EM></TD>
+						<TD><EM>Type</EM></TD>
+						<TD><EM>Description</EM></TD>
+					</TR>
+					<TR>
+						<TD><TT>fl</TT></TD>
+						<TD><TT>int</TT></TD>
+						<TD>
+							The draw flags to apply.
+						</TD>
+					</TR>
+				</TABLE>
+			</P>
+			<H3>Return Value</H3>
+			<P>
+				N/A
+			</P>
+			<H3>Description</H3>
+			<P>
+				Sets flags for draw operations, <TT><A HREF="bitor.html">bitor</A></TT>'d together.
+			</P>
+			<H3>Flag</H3>
+			<P>
+				<TABLE>
+					<TR>
+						<TD><EM>Name</EM></TD>
+						<TD><EM>Description</EM></TD>
+					</TR>
+					<TR>
+						<TD><TT>BACKFACE</TT></TD>
+						<TD>Enable backface culling on geometry</TD>
+					</TR>
+					<TR>
+						<TD><TT>BLEND</TT></TD>
+						<TD>Enable blending</TD>
+					</TR>
+					<TR>
+						<TD><TT>FOG</TT></TD>
+						<TD>Enable fog</TD>
+					</TR>
+					<TR>
+						<TD><TT>TEXTURE</TT></TD>
+						<TD>Enable texture sampling</TD>
+					</TR>
+					<TR>
+						<TD><TT>LIGHTING</TT></TD>
+						<TD>Enable lights and lighting calculations</TD>
+					</TR>
+					<TR>
+						<TD><TT>DEPTH</TT></TD>
+						<TD>Enable depth testing</TD>
+					</TR>
+				</TABLE>
+			</P>
+			<H3>Example</H3>
+			<P>
+				<CODE>
+					<TABLE>
+						<TR>
+							<TD>
+								<PRE>
+import agan
+
+class game():
+	def create(self):
+		fl = [ agan.DEPTH, agan.TEXTURE, agan.LIGHTING ]
+		agan.setflag(agan.bitor(fl))
+		return self
+	#
+	def update(self):
+		pass
+	#
+	def close(self):
+		pass
+								</PRE>
+							</TD>
+						</TR>
+					</TABLE>
+				</CODE>
+			</P>
+			<HR>
+		</CENTER>
+	</BODY>
+</HTML>
