@@ -2,101 +2,101 @@
 <!-- Copyright (C) 2023 Emily "TTG" Banerjee <prs.ttg+aga@pm.me> -->
 
 <!DOCTYPE
-    HTML
-    PUBLIC
-    "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+	HTML
+	PUBLIC
+	"-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
 <HTML LANG="EN">
-    <HEAD>
-        <TITLE>AftGangAglay</TITLE>
-        <LINK
-            REL="ICON"
-            TYPE="IMAGE/SVG"
-            HREF="https://raw.githubusercontent.com/AftGangAglay/AftGangAglay/trunk/res/aga.svg">
+	<HEAD>
+		<TITLE>AftGangAglay</TITLE>
+		<LINK
+			REL="ICON"
+			TYPE="IMAGE/SVG"
+			HREF="https://raw.githubusercontent.com/AftGangAglay/AftGangAglay/trunk/res/aga.svg">
 
-        <META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH">
-        <META CHARSET="UTF-8">
-    </HEAD>
-    <BODY>
-        <CENTER>
-            <H1>AftGangAglay Documentation</H1>
-            <HR>
-            <H2><TT>mktrans</TT></H2>
-            <H3>Parameters</H3>
-            <P>
-                N/A
-            </P>
-            <H3>Return Value</H3>
-            <P>
-                <TABLE>
-                    <TR>
-                        <TD><EM>Type</EM></TD>
-                        <TD><EM>Description</EM></TD>
-                    </TR>
-                    <TR>
-                        <TD><TT>dict</TT></TD>
-                        <TD>
-                            The initialized transform
-                        </TD>
-                    </TR>
-                </TABLE>
-            </P>
-            <H3>Description</H3>
-            <P>
-                Initializes a transform dictionary with the following default state:
-            </P>
-            <P>
-                <TABLE>
-                    <TR>
-                        <TD><EM>Aspect</EM></TD>
-                        <TD><EM>Key</EM></TD>
-                        <TD><EM>Value</EM></TD>
-                    </TR>
-                    <TR>
-                        <TD>Position</TD>
-                        <TD><TT>pos</TT></TD>
-                        <TD><TT>[ 0.0, 0.0, 0.0 ]</TT></TD>
-                    </TR>
-                    <TR>
-                        <TD>Rotation</TD>
-                        <TD><TT>rot</TT></TD>
-                        <TD><TT>[ 0.0, 0.0, 0.0 ]</TT></TD>
-                    </TR>
-                    <TR>
-                        <TD>Scale</TD>
-                        <TD><TT>scale</TT></TD>
-                        <TD><TT>[ 1.0, 1.0, 1.0 ]</TT></TD>
-                    </TR>
-                </TABLE>
-            </P>
-            <H3>Example</H3>
-            <P>
-                <CODE>
-                    <TABLE>
-                        <TR>
-                            <TD>
-                                <PRE>
+		<META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH">
+		<META CHARSET="UTF-8">
+	</HEAD>
+	<BODY>
+		<CENTER>
+			<H1>AftGangAglay Documentation</H1>
+			<HR>
+			<H2><TT>mktrans</TT></H2>
+			<H3>Parameters</H3>
+			<P>
+				N/A
+			</P>
+			<H3>Return Value</H3>
+			<P>
+				<TABLE>
+					<TR>
+						<TD><EM>Type</EM></TD>
+						<TD><EM>Description</EM></TD>
+					</TR>
+					<TR>
+						<TD><TT>dict</TT></TD>
+						<TD>
+							The initialized transform
+						</TD>
+					</TR>
+				</TABLE>
+			</P>
+			<H3>Description</H3>
+			<P>
+				Initializes a transform dictionary with the following default state:
+			</P>
+			<P>
+				<TABLE>
+					<TR>
+						<TD><EM>Aspect</EM></TD>
+						<TD><EM>Key</EM></TD>
+						<TD><EM>Value</EM></TD>
+					</TR>
+					<TR>
+						<TD>Position</TD>
+						<TD><TT>pos</TT></TD>
+						<TD><TT>[ 0.0, 0.0, 0.0 ]</TT></TD>
+					</TR>
+					<TR>
+						<TD>Rotation</TD>
+						<TD><TT>rot</TT></TD>
+						<TD><TT>[ 0.0, 0.0, 0.0 ]</TT></TD>
+					</TR>
+					<TR>
+						<TD>Scale</TD>
+						<TD><TT>scale</TT></TD>
+						<TD><TT>[ 1.0, 1.0, 1.0 ]</TT></TD>
+					</TR>
+				</TABLE>
+			</P>
+			<H3>Example</H3>
+			<P>
+				<CODE>
+					<TABLE>
+						<TR>
+							<TD>
+								<PRE>
 import agan
 
 class game():
-    def create(self):
-        t = agan.mktrans()
-        t['pos'][0] = 3.0
-        t['scale'][2] = 5.0
-        return self
-    #
-    def update(self):
-        pass
-    #
-    def close(self):
-        pass
-                                </PRE>
-                            </TD>
-                        </TR>
-                    </TABLE>
-                </CODE>
-            </P>
-            <HR>
-        </CENTER>
-    </BODY>
+	def create(self):
+		t = agan.mktrans()
+		t['pos'][0] = 3.0
+		t['scale'][2] = 5.0
+		return self
+	#
+	def update(self):
+		pass
+	#
+	def close(self):
+		pass
+								</PRE>
+							</TD>
+						</TR>
+					</TABLE>
+				</CODE>
+			</P>
+			<HR>
+		</CENTER>
+	</BODY>
 </HTML>

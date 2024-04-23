@@ -2,122 +2,122 @@
 <!-- Copyright (C) 2023 Emily "TTG" Banerjee <prs.ttg+aga@pm.me> -->
 
 <!DOCTYPE
-    HTML
-    PUBLIC
-    "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+	HTML
+	PUBLIC
+	"-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
 <HTML LANG="EN">
-    <HEAD>
-        <TITLE>AftGangAglay</TITLE>
-        <LINK
-            REL="ICON"
-            TYPE="IMAGE/SVG"
-            HREF="https://raw.githubusercontent.com/AftGangAglay/AftGangAglay/trunk/res/aga.svg">
+	<HEAD>
+		<TITLE>AftGangAglay</TITLE>
+		<LINK
+			REL="ICON"
+			TYPE="IMAGE/SVG"
+			HREF="https://raw.githubusercontent.com/AftGangAglay/AftGangAglay/trunk/res/aga.svg">
 
-        <META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH">
-        <META CHARSET="UTF-8">
-    </HEAD>
-    <BODY>
-        <CENTER>
-            <H1>AftGangAglay Documentation</H1>
-            <HR>
-            <H2><TT>inobj</TT></H2>
-            <EM>
-                Note: It is advised that you read the <A HREF="../object.html">object documentation</A> before
-                this page in order to familiarise yourself with relevant terms and concepts.
-            </EM>
-            <H3>Parameters</H3>
-            <P>
-                <TABLE>
-                    <TR>
-                        <TD><EM>Parameter</EM></TD>
-                        <TD><EM>Type</EM></TD>
-                        <TD><EM>Description</EM></TD>
-                    </TR>
-                    <TR>
-                        <TD><TT>object</TT></TD>
-                        <TD><TT>nativeptr</TT></TD>
-                        <TD>The object to check against</TD>
-                    </TR>
-                    <TR>
-                        <TD><TT>point</TT></TD>
-                        <TD><TT>list</TT></TD>
-                        <TD>The point to check</TD>
-                    </TR>
-                    <TR>
-                        <TD><TT>planar</TT></TD>
-                        <TD><TT>int</TT></TD>
-                        <TD>Whether the check should ignore Y position</TD>
-                    </TR>
-                    <TR>
-                        <TD><TT>debug</TT></TD>
-                        <TD><TT>int</TT></TD>
-                        <TD>Whether to draw debug wireframes for the bounding volume</TD>
-                    </TR>
-                    <TR><TD><EM>New in 2.1.0</EM></TD></TR>
-                    <TR>
-                        <TD><EM>optional</EM> <TT>tolerance</TT></TD>
-                        <TD><TT>float</TT></TD>
-                        <TD>The tolerance/margin of the object's bounds; <TT>0.1</TT> if unspecified</TD>
-                    </TR>
-                </TABLE>
-            </P>
-            <H3>Return Value</H3>
-            <P>
-                <TABLE>
-                    <TR>
-                        <TD><EM>Type</EM></TD>
-                        <TD><EM>Description</EM></TD>
-                    </TR>
-                    <TR>
-                        <TD><TT>int</TT></TD>
-                        <TD>
-                            Whether the point lies inside the object's bounds
-                        </TD>
-                    </TR>
-                </TABLE>                
-            </P>
-            <H3>Description</H3>
-            <P>
-                Checks whether <TT>point</TT> is within the bounding volume of <TT>object</TT>.
-            </P>
-            <P>
-                If <TT>planar</TT> is set, checks are only performed against the X and Z axes.
-                <BR>
-                If <TT>debug</TT> is set, the bounding volumes will be outlined by a wireframe.
-            </P>
-            <H3>Example</H3>
-            <P>
-                <CODE>
-                    <TABLE>
-                        <TR>
-                            <TD>
-                                <PRE>
+		<META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH">
+		<META CHARSET="UTF-8">
+	</HEAD>
+	<BODY>
+		<CENTER>
+			<H1>AftGangAglay Documentation</H1>
+			<HR>
+			<H2><TT>inobj</TT></H2>
+			<EM>
+				Note: It is advised that you read the <A HREF="../object.html">object documentation</A> before
+				this page in order to familiarise yourself with relevant terms and concepts.
+			</EM>
+			<H3>Parameters</H3>
+			<P>
+				<TABLE>
+					<TR>
+						<TD><EM>Parameter</EM></TD>
+						<TD><EM>Type</EM></TD>
+						<TD><EM>Description</EM></TD>
+					</TR>
+					<TR>
+						<TD><TT>object</TT></TD>
+						<TD><TT>nativeptr</TT></TD>
+						<TD>The object to check against</TD>
+					</TR>
+					<TR>
+						<TD><TT>point</TT></TD>
+						<TD><TT>list</TT></TD>
+						<TD>The point to check</TD>
+					</TR>
+					<TR>
+						<TD><TT>planar</TT></TD>
+						<TD><TT>int</TT></TD>
+						<TD>Whether the check should ignore Y position</TD>
+					</TR>
+					<TR>
+						<TD><TT>debug</TT></TD>
+						<TD><TT>int</TT></TD>
+						<TD>Whether to draw debug wireframes for the bounding volume</TD>
+					</TR>
+					<TR><TD><EM>New in 2.1.0</EM></TD></TR>
+					<TR>
+						<TD><EM>optional</EM> <TT>tolerance</TT></TD>
+						<TD><TT>float</TT></TD>
+						<TD>The tolerance/margin of the object's bounds; <TT>0.1</TT> if unspecified</TD>
+					</TR>
+				</TABLE>
+			</P>
+			<H3>Return Value</H3>
+			<P>
+				<TABLE>
+					<TR>
+						<TD><EM>Type</EM></TD>
+						<TD><EM>Description</EM></TD>
+					</TR>
+					<TR>
+						<TD><TT>int</TT></TD>
+						<TD>
+							Whether the point lies inside the object's bounds
+						</TD>
+					</TR>
+				</TABLE>				
+			</P>
+			<H3>Description</H3>
+			<P>
+				Checks whether <TT>point</TT> is within the bounding volume of <TT>object</TT>.
+			</P>
+			<P>
+				If <TT>planar</TT> is set, checks are only performed against the X and Z axes.
+				<BR>
+				If <TT>debug</TT> is set, the bounding volumes will be outlined by a wireframe.
+			</P>
+			<H3>Example</H3>
+			<P>
+				<CODE>
+					<TABLE>
+						<TR>
+							<TD>
+								<PRE>
 import agan
 
 class game():
-    def create(self):
-        self.obj = agan.mkobj('foo.sgml')
-        return self
-    #
-    def update(self):
-        if(agan.inobj(self.obj, [ 1.0, 0.0, 5.0 ], 1, 0)):
-            agan.text('Hello', [ 0.5, 0.5 ])
-        #
-        agan.log(agan.objtrans(self.obj))
-        agan.log(agan.objconf(self.obj, [ 'Model' ]))
-        #
-        agan.putobj(self.obj)
-    #
-    def close(self):
-        agan.killobj(self.obj)
-                                </PRE>
-                            </TD>
-                        </TR>
-                    </TABLE>
-                </CODE>
-            </P>
-            <HR>
-        </CENTER>
-    </BODY>
+	def create(self):
+		self.obj = agan.mkobj('foo.sgml')
+		return self
+	#
+	def update(self):
+		if(agan.inobj(self.obj, [ 1.0, 0.0, 5.0 ], 1, 0)):
+			agan.text('Hello', [ 0.5, 0.5 ])
+		#
+		agan.log(agan.objtrans(self.obj))
+		agan.log(agan.objconf(self.obj, [ 'Model' ]))
+		#
+		agan.putobj(self.obj)
+	#
+	def close(self):
+		agan.killobj(self.obj)
+								</PRE>
+							</TD>
+						</TR>
+					</TABLE>
+				</CODE>
+			</P>
+			<HR>
+		</CENTER>
+	</BODY>
 </HTML>

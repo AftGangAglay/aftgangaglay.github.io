@@ -2,67 +2,67 @@
 <!-- Copyright (C) 2023 Emily "TTG" Banerjee <prs.ttg+aga@pm.me> -->
 
 <!DOCTYPE
-    HTML
-    PUBLIC
-    "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+	HTML
+	PUBLIC
+	"-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
 <HTML LANG="EN">
-    <HEAD>
-        <TITLE>AftGangAglay</TITLE>
-        <LINK
-            REL="ICON"
-            TYPE="IMAGE/SVG"
-            HREF="https://raw.githubusercontent.com/AftGangAglay/AftGangAglay/trunk/res/aga.svg">
+	<HEAD>
+		<TITLE>AftGangAglay</TITLE>
+		<LINK
+			REL="ICON"
+			TYPE="IMAGE/SVG"
+			HREF="https://raw.githubusercontent.com/AftGangAglay/AftGangAglay/trunk/res/aga.svg">
 
-        <META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH">
-        <META CHARSET="UTF-8">
-    </HEAD>
-    <BODY>
-        <CENTER>
-            <H1>AftGangAglay Documentation</H1>
-            <HR>
-            <H2>Engine Executable</H2>
-            <P>
-                The <TT>aftgangaglay</TT> executable is a relocatable executable which consumes applications and
-                produces the desired behaviours therein. The executable itself shouldn't require any external runtime
-                support.
-            </P>
-            <P>
-                The executable can be informed by several command line switches (if built with <TT>getopt</TT> support)
-                detailed below.
-                <TABLE>
-                    <TR>
-                        <TD><TT>-f [config]</TT></TD>
-                        <TD>Specifies an alternate application config path (default: <TT>./aga.sgml</TT>)</TD>
-                    </TR>
-                    <TR>
-                        <TD><TT>-A [dsp]</TT></TD>
-                        <TD>Specifies an alternate DSP audio device (default: <TT>/dev/dsp1</TT>)</TD>
-                    </TR>
-                    <TR>
-                        <TD><TT>-D [display]</TT></TD>
-                        <TD>
-                            Specifies an alternate <TT>DISPLAY</TT> string
-                            (default: <TT>$DISPLAY</TT>, otherwise <TT>:0</TT>)
-                        </TD>
-                    </TR>
-                    <TR>
-                        <TD><TT>-C [dir]</TT></TD>
-                        <TD>Specifies the working directory to run from (default: <TT>./</TT>)</TD>
-                    </TR>
-                </TABLE>
-                <BR>
-                Additionally, on X based systems the remainder of <TT>argv</TT> is passed through to XLib init with its
-                respective options.
-            </P>
-            <H2>Application Packaging</H2>
-            <P>
-                AftGangAglay applications can typically be shipped as a subset of the project source tree (typically
-                with development-specific files like the <TT>.git</TT> tree and IDE configuration removed) with the
-                <TT>aftgangaglay</TT> executable in the root directory, renamed to the appropriate application title
-                if desired.
-            </P>
-            <HR>
-        </CENTER>
-    </BODY>
+		<META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH">
+		<META CHARSET="UTF-8">
+	</HEAD>
+	<BODY>
+		<CENTER>
+			<H1>AftGangAglay Documentation</H1>
+			<HR>
+			<H2>Engine Executable</H2>
+			<P>
+				The <TT>aftgangaglay</TT> executable is a relocatable executable which consumes applications and
+				produces the desired behaviours therein. The executable itself shouldn't require any external runtime
+				support.
+			</P>
+			<P>
+				The executable can be informed by several command line switches (if built with <TT>getopt</TT> support)
+				detailed below.
+				<TABLE>
+					<TR>
+						<TD><TT>-f [config]</TT></TD>
+						<TD>Specifies an alternate application config path (default: <TT>./aga.sgml</TT>)</TD>
+					</TR>
+					<TR>
+						<TD><TT>-A [dsp]</TT></TD>
+						<TD>Specifies an alternate DSP audio device (default: <TT>/dev/dsp1</TT>)</TD>
+					</TR>
+					<TR>
+						<TD><TT>-D [display]</TT></TD>
+						<TD>
+							Specifies an alternate <TT>DISPLAY</TT> string
+							(default: <TT>$DISPLAY</TT>, otherwise <TT>:0</TT>)
+						</TD>
+					</TR>
+					<TR>
+						<TD><TT>-C [dir]</TT></TD>
+						<TD>Specifies the working directory to run from (default: <TT>./</TT>)</TD>
+					</TR>
+				</TABLE>
+				<BR>
+				Additionally, on X based systems the remainder of <TT>argv</TT> is passed through to XLib init with its
+				respective options.
+			</P>
+			<H2>Application Packaging</H2>
+			<P>
+				AftGangAglay applications can typically be shipped as a subset of the project source tree (typically
+				with development-specific files like the <TT>.git</TT> tree and IDE configuration removed) with the
+				<TT>aftgangaglay</TT> executable in the root directory, renamed to the appropriate application title
+				if desired.
+			</P>
+			<HR>
+		</CENTER>
+	</BODY>
 </HTML>

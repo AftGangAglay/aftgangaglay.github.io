@@ -2,91 +2,91 @@
 <!-- Copyright (C) 2023 Emily "TTG" Banerjee <prs.ttg+aga@pm.me> -->
 
 <!DOCTYPE
-    HTML
-    PUBLIC
-    "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+	HTML
+	PUBLIC
+	"-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
 <HTML LANG="EN">
-    <HEAD>
-        <TITLE>AftGangAglay</TITLE>
-        <LINK
-            REL="ICON"
-            TYPE="IMAGE/SVG"
-            HREF="https://raw.githubusercontent.com/AftGangAglay/AftGangAglay/trunk/res/aga.svg">
+	<HEAD>
+		<TITLE>AftGangAglay</TITLE>
+		<LINK
+			REL="ICON"
+			TYPE="IMAGE/SVG"
+			HREF="https://raw.githubusercontent.com/AftGangAglay/AftGangAglay/trunk/res/aga.svg">
 
-        <META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH">
-        <META CHARSET="UTF-8">
-    </HEAD>
-    <BODY>
-        <CENTER>
-            <H1>AftGangAglay Documentation</H1>
-            <HR>
-            <H2><TT>mklargefile</TT></H2>
-            <H3>Parameters</H3>
-            <P>
-                <TABLE>
-                    <TR>
-                        <TD><EM>Parameter</EM></TD>
-                        <TD><EM>Type</EM></TD>
-                        <TD><EM>Description</EM></TD>
-                    </TR>
-                    <TR>
-                        <TD><TT>path</TT></TD>
-                        <TD><TT>string</TT></TD>
-                        <TD>The path to load the file from</TD>
-                    </TR>
-                </TABLE>
-            </P>
-            <H3>Return Value</H3>
-            <P>
-                <TABLE>
-                    <TR>
-                        <TD><EM>Type</EM></TD>
-                        <TD><EM>Description</EM></TD>
-                    </TR>
-                    <TR>
-                        <TD><TT>nativeptr</TT></TD>
-                        <TD>The loaded large file handle</TD>
-                    </TR>
-                </TABLE>
-            </P>
-            <H3>Description</H3>
-            <P>
-                Opens a "large file strategy" handle - in practice this tries to <TT>mmap</TT> if the system supports
-                it and otherwise uses the typical <TT>malloc</TT> + <TT>fread</TT> pattern.
-            </P>
-            <P>
-                Once no longer in use, handles should be closed using
-                <TT><A HREF="killlargefile.html">killlargefile</A></TT>.
-            </P>
-            <H3>Example</H3>
-            <P>
-                <CODE>
-                    <TABLE>
-                        <TR>
-                            <TD>
-                                <PRE>
+		<META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH">
+		<META CHARSET="UTF-8">
+	</HEAD>
+	<BODY>
+		<CENTER>
+			<H1>AftGangAglay Documentation</H1>
+			<HR>
+			<H2><TT>mklargefile</TT></H2>
+			<H3>Parameters</H3>
+			<P>
+				<TABLE>
+					<TR>
+						<TD><EM>Parameter</EM></TD>
+						<TD><EM>Type</EM></TD>
+						<TD><EM>Description</EM></TD>
+					</TR>
+					<TR>
+						<TD><TT>path</TT></TD>
+						<TD><TT>string</TT></TD>
+						<TD>The path to load the file from</TD>
+					</TR>
+				</TABLE>
+			</P>
+			<H3>Return Value</H3>
+			<P>
+				<TABLE>
+					<TR>
+						<TD><EM>Type</EM></TD>
+						<TD><EM>Description</EM></TD>
+					</TR>
+					<TR>
+						<TD><TT>nativeptr</TT></TD>
+						<TD>The loaded large file handle</TD>
+					</TR>
+				</TABLE>
+			</P>
+			<H3>Description</H3>
+			<P>
+				Opens a "large file strategy" handle - in practice this tries to <TT>mmap</TT> if the system supports
+				it and otherwise uses the typical <TT>malloc</TT> + <TT>fread</TT> pattern.
+			</P>
+			<P>
+				Once no longer in use, handles should be closed using
+				<TT><A HREF="killlargefile.html">killlargefile</A></TT>.
+			</P>
+			<H3>Example</H3>
+			<P>
+				<CODE>
+					<TABLE>
+						<TR>
+							<TD>
+								<PRE>
 import agan
 
 class game():
-    def create(self):
-        self.f = agan.mklargefile('test.txt')
-        self.clip = agan.mkclip(f)
-        return self
-    #
-    def update(self):
-        pass
-    #
-    def close(self):
-        agan.killclip(self.clip) # `clip' created from `f' and must die first.
-        agan.killlargefile(self.f)
-                                </PRE>
-                            </TD>
-                        </TR>
-                    </TABLE>
-                </CODE>
-            </P>
-            <HR>
-        </CENTER>
-    </BODY>
+	def create(self):
+		self.f = agan.mklargefile('test.txt')
+		self.clip = agan.mkclip(f)
+		return self
+	#
+	def update(self):
+		pass
+	#
+	def close(self):
+		agan.killclip(self.clip) # `clip' created from `f' and must die first.
+		agan.killlargefile(self.f)
+								</PRE>
+							</TD>
+						</TR>
+					</TABLE>
+				</CODE>
+			</P>
+			<HR>
+		</CENTER>
+	</BODY>
 </HTML>
