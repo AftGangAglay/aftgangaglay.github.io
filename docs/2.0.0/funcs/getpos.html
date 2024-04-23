@@ -21,7 +21,8 @@
 		<CENTER>
 			<H1>AftGangAglay Documentation</H1>
 			<HR>
-			<H2><TT>getmotion</TT></H2>
+			<H2><TT>getpos</TT></H2>
+			<EM>New in 2.2.0</EM>
 			<H3>Parameters</H3>
 			<P>
 				N/A
@@ -34,17 +35,16 @@
 						<TD><EM>Description</EM></TD>
 					</TR>
 					<TR>
-						<TD><TT>float[2]</TT></TD>
+						<TD><TT>int[2]</TT></TD>
 						<TD>
-							A list of 2 floats containing the mouse cursor X and Y motion.
+							A list of 2 ints containing the mouse cursor screen position.
 						</TD>
 					</TR>
 				</TABLE>
 			</P>
 			<H3>Description</H3>
 			<P>
-				Retrieves the mouse cursor motion this frame in terms of X and Y deltas. The exact metric reported
-				varies by platform.
+				Retrieves the mouse cursor position in screen coordinates.
 			</P>
 			<H3>Example</H3>
 			<P>
@@ -60,21 +60,12 @@ class game():
 		return self
 	#
 	def update(self):
-		m = agan.getmotion()
+		m = agan.getpos()
 		#
-		if(m[0] > 0.0):
-			agan.log("Mouse is moving right")
-		elif(m[0] &lt; 0.0):
-			agan.log("Mouse is moving left")
-		else:
-			agan.log("Mouse is not moving left or right")
-		#
-		if(m[1] > 0.0):
-			agan.log("Mouse is moving down")
-		elif(m[1] &lt; 0.0):
-			agan.log("Mouse is moving up")
-		else:
-			agan.log("Mouse is not moving up or down")
+		agan.log("Mouse is at X:")
+		agan.log(m[0])
+		agan.log("Y:")
+		agan.log(m[1])
 	#
 	def close(self):
 		pass
