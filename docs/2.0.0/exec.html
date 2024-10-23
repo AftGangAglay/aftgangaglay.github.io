@@ -23,14 +23,25 @@
 			<HR>
 			<H2>Engine Executable</H2>
 			<P>
-				The <TT>aftgangaglay</TT> executable is a relocatable executable which consumes applications and
+				The <TT>aga</TT> executable is a relocatable executable which consumes applications and
 				produces the desired behaviours therein. The executable itself shouldn't require any external runtime
-				support.
+				support beyond the standard environment of the target system.
 			</P>
 			<P>
-				The executable can be informed by several command line switches (if built with <TT>getopt</TT> support)
-				detailed below.
+				The engine can be configured as a "dev build" which enables additional functionality such as file
+				serialisation and <A HREF="agapack.html">resource pack</A> compilation. The latter is described later
+				in this page.
+			</P>
+			<P>
+				The executable can be informed by several command line switches detailed below.
 				<TABLE>
+					<TR>
+						<TD><TT>-c</TT></TD>
+						<TD>
+							Switches to compilation mode (dev only). Changes meaning of some options &mdash; see below
+							for relevant changes.
+						</TD>
+					</TR>
 					<TR>
 						<TD><TT>-f [respack]</TT></TD>
 						<TD>
@@ -63,10 +74,153 @@
 				respective options.
 			</P>
 			<H2>Application Packaging</H2>
+			<EM>
+				Note: It is advised that you read the <A HREF="config.html">configuration documentation</A> before
+				this section in order to familiarise yourself with relevant terms and concepts.
+			</EM>
 			<P>
-				AftGangAglay applications should be shipped as a single resource pack alongside a compiled engine
-				executable - optionally compiled as non-debug. There is currently no "integrated" method to set the
-				application icon, but you can replace <TT>res/aga.ico</TT> before build on Windows targets.
+				AftGangAglay applications should be shipped as a single resource pack named <TT>agapack.raw</TT>
+				alongside an engine executable. This ensures simple distribution as only two files are required, and
+				application startup from the graphical shell does not require additional arguments.
+			</P>
+			<P>
+				Compilation of resources into a <A HREF="agapack.html">resource pack</A> by the engine is informed by
+				the <TT>agabuild.sgml</TT>  file. An example structure for this file is outlined below:
+			</P>
+			<P>
+				<CODE>
+					<TABLE>
+						<TR>
+							<TD>
+								<PRE>
+&lt;root&gt;
+	&lt;item name="Output" type="String"&gt;agapack.raw&lt;/item&gt;
+
+	&lt;item name="Input"&gt;
+		&lt;item&gt;
+			&lt;item name="Kind" type="String"&gt;TIFF&lt;/item&gt;
+			&lt;item name="Path" type="String"&gt;img&lt;/item&gt;
+		&lt;/item&gt;
+
+		&lt;item&gt;
+			&lt;item name="Kind" type="String"&gt;OBJ&lt;/item&gt;
+			&lt;item name="Path" type="String"&gt;model&lt;/item&gt;
+			&lt;item name="Recurse" type="Integer"&gt;1&lt;/item&gt;
+		&lt;/item&gt;
+	&lt;/item&gt;
+&lt;/root&gt;
+								</PRE>
+							</TD>
+						</TR>
+					</TABLE>
+				</CODE>
+			</P>
+			<P>
+				Each <TT>Input</TT> entry describes a set of files of a given <TT>Kind</TT> to process into the
+				<TT>Output</TT> file. Only files whose extension matches the input kind are processed for a given
+				<TT>Input</TT> entry.
+			</P>
+			<P>
+				Below is a table of supported file kinds. The exact format of the file within the resource pack is
+				not described (except for <TT>RAW</TT>), and internal format stability is not guaranteed between minor
+				releases (older formats will still be consumed correctly for at least the remainder of the major
+				release).
+			</P>
+			<P>
+				<TABLE>
+					<TR>
+						<TD><EM>Kind</EM></TD>
+						<TD><EM>Extension</EM></TD>
+						<TD><EM>Description</EM></TD>
+						<TD><EM>Notes</EM></TD>
+					</TR>
+					<TR>
+						<TD><TT>RAW</TT></TD>
+						<TD><TT>.raw</TT></TD>
+						<TD>
+							File contents are copied directly into the resource pack. Can be used to insert resources
+							compiled with external format importers.
+						</TD>
+						<TD></TD>
+					</TR>
+					<TR>
+						<TD><TT>TIFF</TT></TD>
+						<TD><TT>.tiff</TT></TD>
+						<TD>
+							TIFF image is compiled into a raw image and inserted into the resource pack.
+						</TD>
+						<TD></TD>
+					</TR>
+					<TR>
+						<TD><TT>OBJ</TT></TD>
+						<TD><TT>.obj</TT></TD>
+						<TD>
+							OBJ model is compiled into raw vertex data and inserted into the resource pack. Model
+							extents are calculated and inserted as resource metadata.
+						</TD>
+						<TD>
+							Object groups are flattened into a single mesh.
+							<BR>
+							MTL material database information is not currently preserved.
+						</TD>
+					</TR>
+					<TR>
+						<TD><TT>SGML</TT></TD>
+						<TD><TT>.sgml</TT></TD>
+						<TD>
+							Currently behaves the same as <TT>RAW</TT>.
+						</TD>
+						<TD></TD>
+					</TR>
+					<TR>
+						<TD><TT>PY</TT></TD>
+						<TD><TT>.py</TT></TD>
+						<TD>
+							File contents are copied into the resource pack and extra terminating characters are added.
+						</TD>
+						<TD>
+							Python scripts are currently required to end with a newline character to behave correctly
+							during resource pack builds.
+						</TD>
+					</TR>
+					<TR>
+						<TD><TT>WAV</TT></TD>
+						<TD><TT>.wav</TT></TD>
+						<TD><EM>Not currently implemented.</EM></TD>
+						<TD></TD>
+					</TR>
+					<TR>
+						<TD><TT>MIDI</TT></TD>
+						<TD><TT>.midi</TT></TD>
+						<TD><EM>Not currently implemented.</EM></TD>
+						<TD></TD>
+					</TR>
+				</TABLE>
+			</P>
+			<H2>Pack Compilation Command-Line</H2>
+			<P>
+				Invoking a "dev build" of the engine with the <TT>-c</TT> flag places the engine into a different mode
+				where it compiles a resource pack from <TT>agabuild.sgml</TT>. This changes the meaning of the
+				following options:
+			</P>
+			<P>
+				<TABLE>
+					<TR>
+						<TD><TT>-f [buildfile]</TT></TD>
+						<TD>
+							Specifies an alternate build file path
+							(default: <TT>./agabuild.sgml</TT>)
+						</TD>
+					</TR>
+					<TR>
+						<TD><TT>-A [arg]</TT></TD>
+						<TD>N/A</TD>
+					</TR>
+					<TR>
+						<TD><TT>-D [arg]</TT></TD>
+						<TD>N/A</TD>
+					</TR>
+				</TABLE>
 			</P>
 			<HR>
 		</CENTER>

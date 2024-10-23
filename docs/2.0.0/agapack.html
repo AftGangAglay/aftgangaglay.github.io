@@ -24,54 +24,13 @@
 			<H2>Resource Pack</H2>
 			<P>
 				AftGangAglay applications are consumed from a single archive which contains all the files required for
-				execution. Resources can have attached configuration which is processed by the <TT>aga-packgen</TT>
-				script for some predefined file types. This configuration is stored inside the resource pack in the
-				header.
+				execution. Building this archive is achieved with a build tool integrated into
+				"dev builds" of the engine binary, whose use is outlined <A HREF="exec.html">here</A>.
 			</P>
 			<P>
-				The exact specification of the resource pack is not outlined here, as it is intended to be a
+				The exact specification of the resource pack is not described here, as it is intended to be a
 				transparent container and internal details are liable to change between versions without being
 				indicated as a breaking change.
-			</P>
-			<P>
-				<TABLE>
-					<TR>
-						<TD><EM>Type</EM></TD>
-						<TD><EM>Distinction</EM></TD>
-						<TD><EM>Generator</EM></TD>
-						<TD><EM>Description</EM></TD>
-					</TR>
-					<TR>
-						<TD>Python Scripts</TD>
-						<TD>Extension (<TT>.py</TT>)</TD>
-						<TD>N/A</TD>
-						<TD>
-							Python scripts processed by <TT>aga-packgen</TT> will have an extra file terminator byte
-							appended. This requires all Python sources to end with a newline.
-						</TD>
-					</TR>
-					<TR>
-						<TD>Image Data</TD>
-						<TD>Magic (<TT>0xA6A13600</TT>)</TD>
-						<TD><TT>aga-imggen</TT></TD>
-						<TD>
-							<TT>aga-imggen</TT> processes typical image formats into raw <TT>RGBA8</TT> image data, and
-							appends their width and a magic indicator. This is consumed by <TT>aga-packgen</TT> to
-							add a <TT>Width</TT> config tag.
-						</TD>
-					</TR>
-					<TR>
-						<TD>Model Data</TD>
-						<TD>Magic (<TT>0xA6A3D700</TT>)</TD>
-						<TD><TT>aga-vertgen</TT></TD>
-						<TD>
-							<TT>aga-vertgen</TT> processes typical model formats into raw vertex data, and
-							appends their bounding volume and a magic indicator. This is consumed by
-							<TT>aga-packgen</TT> to add config tags relaying the bounding volume
-							(<TT>Min(X|Y|Z)</TT> and <TT>Max(X|Y|Z)</TT>).
-						</TD>
-					</TR>
-				</TABLE>
 			</P>
 			<HR>
 		</CENTER>
