@@ -73,6 +73,26 @@
 				Additionally, on X based systems the remainder of <TT>argv</TT> is passed through to XLib init with its
 				respective options.
 			</P>
+			<H2>Environment</H2>
+			<P>
+				The engine executable respects the following environment variables when executing:
+			</P>
+			<P>
+				<TABLE>
+					<TR>
+						<TD><TT>AGA_DOPROF</TT></TD>
+						<TD>
+							Enables a performance readout graph.
+						</TD>
+					</TR>
+					<TR>
+						<TD><TT>AGA_FORCEANSI</TT></TD>
+						<TD>
+							Unconditionally enables ANSI terminal sequences in <TT>stdout</TT> log output.
+						</TD>
+					</TR>
+				</TABLE>
+			</P>
 			<H2>Application Packaging</H2>
 			<EM>
 				Note: It is advised that you read the <A HREF="config.html">configuration documentation</A> before
