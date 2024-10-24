@@ -1,0 +1,98 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Copyright (C) 2023, 2024 Emily "TTG" Banerjee <prs.ttg+aga@pm.me> -->
+
+<!DOCTYPE
+	HTML
+	PUBLIC
+	"-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<HTML LANG="EN">
+	<HEAD>
+		<TITLE>AftGangAglay</TITLE>
+		<LINK
+			REL="ICON"
+			TYPE="IMAGE/SVG"
+			HREF="https://raw.githubusercontent.com/AftGangAglay/AftGangAglay/trunk/res/aga.svg">
+
+		<META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH">
+		<META CHARSET="UTF-8">
+	</HEAD>
+	<BODY>
+		<CENTER>
+			<H1>AftGangAglay Documentation</H1>
+			<HR>
+			<H2><TT>dumpobj</TT></H2>
+			<P><EM>New in 2.3.0</EM></P>
+			<P>
+				<EM>
+					Note: This function is only available in "dev builds". See <A HREF="../exec.html">here</A> for more
+					information.
+				</EM>
+			</P>
+			<P>
+				<EM>
+					Note: It is advised that you read the <A HREF="../object.html">object documentation</A> before
+					this page in order to familiarise yourself with relevant terms and concepts.
+				</EM>
+			</P>
+			<H3>Parameters</H3>
+			<P>
+				<TABLE>
+					<TR>
+						<TD><EM>Parameter</EM></TD>
+						<TD><EM>Type</EM></TD>
+						<TD><EM>Description</EM></TD>
+					</TR>
+					<TR>
+						<TD><TT>object</TT></TD>
+						<TD><TT>int</TT></TD>
+						<TD>The object to dump</TD>
+					</TR>
+					<TR>
+						<TD><TT>path</TT></TD>
+						<TD><TT>string</TT></TD>
+						<TD>The file path to write the object to</TD>
+					</TR>
+				</TABLE>
+			</P>
+			<H3>Return Value</H3>
+			<P>
+				N/A
+			</P>
+			<H3>Description</H3>
+			<P>
+				Serializes an <TT>object</TT> back to a source SGML file. This can be used to implement saving of
+				modified object data in an application editor.
+			</P>
+			<!-- TODO: Make all example `agan.' calls link to the relevant function documentation. -->
+			<H3>Example</H3>
+			<P>
+				<CODE>
+					<TABLE>
+						<TR>
+							<TD>
+								<PRE>
+import agan
+
+class game():
+	def create(self):
+		self.obj = agan.mkobj('foo.sgml')
+		return self
+	#
+	def update(self):
+		if(agan.getkey(agan.KEY_S)):
+			agan.log('Saving object...')
+			agan.dumpobj(self.obj, 'foo_2.sgml')
+	#
+	def close(self):
+		pass
+								</PRE>
+							</TD>
+						</TR>
+					</TABLE>
+				</CODE>
+			</P>
+			<HR>
+		</CENTER>
+	</BODY>
+</HTML>
