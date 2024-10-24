@@ -21,7 +21,7 @@
 		<CENTER>
 			<H1>AftGangAglay Documentation</H1>
 			<HR>
-			<H2><TT>mkpack</TT></H2>
+			<H2><TT>setobjmdl</TT></H2>
 			<P><EM>New in 2.3.0</EM></P>
 			<P>
 				<EM>
@@ -29,9 +29,33 @@
 					information.
 				</EM>
 			</P>
+			<P>
+				<EM>
+					Note: It is advised that you read the <A HREF="../object.html">object documentation</A> before
+					this page in order to familiarise yourself with relevant terms and concepts.
+				</EM>
+			</P>
 			<H3>Parameters</H3>
 			<P>
-				N/A
+				<TABLE>
+					<TR>
+						<TD><EM>Parameter</EM></TD>
+						<TD><EM>Type</EM></TD>
+						<TD><EM>Description</EM></TD>
+					</TR>
+					<TR>
+						<TD><TT>object</TT></TD>
+						<TD><TT>int</TT></TD>
+						<TD>The object whose model to set</TD>
+					</TR>
+					<TR>
+						<TD><TT>path</TT></TD>
+						<TD><TT>string</TT></TD>
+						<TD>
+							The model path to use
+						</TD>
+					</TR>
+				</TABLE>
 			</P>
 			<H3>Return Value</H3>
 			<P>
@@ -39,10 +63,7 @@
 			</P>
 			<H3>Description</H3>
 			<P>
-				Reloads the application <A HREF="../agapack.html">resource pack</A>. This should only be performed
-				after <TT><A HREF="killpack.html">agan.killpack</A></TT> is used to unload an active resource pack
-				&mdash; reloading the resource pack while another is active can lead to orphaned resource references
-				and program instability.
+				Sets the model used by an object to the model resource pointed to by <TT>path</TT>.
 			</P>
 			<H3>Example</H3>
 			<P>
@@ -55,13 +76,12 @@ import agan
 
 class game():
 	def create(self):
+		self.obj = agan.mkobj('foo.sgml')
+		agan.setobjmdl(self.obj, 'thing.obj.raw')
 		return self
 	#
 	def update(self):
-		if(agan.getkey(agan.KEY_R)):
-			agan.log('Reloading resource pack...')
-			agan.killpack()
-			agan.mkpack()
+		pass
 	#
 	def close(self):
 		pass
