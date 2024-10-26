@@ -30,7 +30,7 @@
 			</P>
 			<P>
 				Objects in AftGangAglay are managed graphical elements consisting of a model and a texture. Objects are
-				described by a config file similar to <TT>aga.conf</TT> which describes how they should be rendered,
+				described by a config file similar to <TT>aga.sgml</TT> which describes how they should be rendered,
 				as well as any additional user-specified configuration which can be retrieved using
 				<TT><A HREF="funcs/objconf.html">objconf</A></TT>.
 			</P>
@@ -76,8 +76,10 @@
 			</P>
 			<H2>Built-In Options</H2>
 			<P>
-				<!-- TODO: Document lighting operation. -->
-				There are several options which AftGangAglay directly references from this file, detailed below:
+				There are several options which AftGangAglay directly references from this file, detailed below.
+				<BR>
+				The <TT>XYZ</TT> <TT>Type</TT> field represents an item of type <TT>None</TT> with three <TT>Float</TT>
+				children with the keys <TT>X</TT> <TT>Y</TT> and <TT>Z</TT>, representing a 3D vector. 
 				<TABLE>
 					<TR>
 						<TD><EM>Key</EM></TD>
@@ -101,11 +103,154 @@
 							The path to the texture data in the resource pack
 						</TD>
 					</TR>
+					<TR>
+						<TD><TT>Position</TT></TD>
+						<TD><TT>XYZ</TT></TD>
+						<TD><TT>[ 0.0, 0.0, 0.0 ]</TT></TD>
+						<TD>
+							The initial position for the object
+						</TD>
+					</TR>
+					<TR>
+						<TD><TT>Rotation</TT></TD>
+						<TD><TT>XYZ</TT></TD>
+						<TD><TT>[ 0.0, 0.0, 0.0 ]</TT></TD>
+						<TD>
+							The initial rotation for the object
+						</TD>
+					</TR>
+					<TR>
+						<TD><TT>Scale</TT></TD>
+						<TD><TT>XYZ</TT></TD>
+						<TD><TT>[ 1.0, 1.0, 1.0 ]</TT></TD>
+						<TD>
+							The initial scale of the object
+						</TD>
+					</TR>
+					<TR><TD><EM>New in 2.3.0</EM></TD></TR>
+					<TR>
+						<TD><TT>Light</TT></TD>
+						<TD><TT>None</TT></TD>
+						<TD>No light attached to object</TD>
+						<TD>
+							Item containing information for a light to be attached to the object. The accepted
+							parameters are documented below
+						</TD>
+					</TR>
 				</TABLE>
 			</P>
+			<H3>Light Config Structure</H3>
+			<P><EM>New in 2.3.0</EM></P>
 			<P>
-				Additionally, the keys <TT>Position Rotation Scale</TT> should have 3 children of type <TT>float</TT>
-				named <TT>X Y Z</TT> providing the initial transform for the object.
+				The <TT>RGB</TT> <TT>Type</TT> field represents an item of type <TT>None</TT> with three <TT>Float</TT>
+				children with the keys <TT>R</TT> <TT>G</TT> and <TT>B</TT>, representing an RGB color value.
+				<TABLE>
+					<TR>
+						<TD><EM>Key</EM></TD>
+						<TD><EM>Type</EM></TD>
+						<TD><EM>Default</EM></TD>
+						<TD><EM>Description</EM></TD>
+					</TR>
+					<TR>
+						<TD><TT>Ambient</TT></TD>
+						<TD><TT>RGB</TT></TD>
+						<TD><TT>[ 1.0, 1.0, 1.0 ]</TT></TD>
+						<TD>
+							The color of the light's ambient emission
+						</TD>
+					</TR>
+					<TR>
+						<TD><TT>Diffuse</TT></TD>
+						<TD><TT>RGB</TT></TD>
+						<TD><TT>[ 1.0, 1.0, 1.0 ]</TT></TD>
+						<TD>
+							The color of the light's diffuse emission
+						</TD>
+					</TR>
+					<TR>
+						<TD><TT>Specular</TT></TD>
+						<TD><TT>RGB</TT></TD>
+						<TD><TT>[ 1.0, 1.0, 1.0 ]</TT></TD>
+						<TD>
+							The color of the light's specular emission
+						</TD>
+					</TR>
+					<TR>
+						<TD><TT>Attenuation</TT></TD>
+						<TD><TT>None</TT></TD>
+						<TD><TT>[ 0.0, 0.0, 0.0 ]</TT></TD>
+						<TD>
+							The attenuation of the light source. Fields are documented below
+						</TD>
+					</TR>
+					<TR>
+						<TD><TT>Direction</TT></TD>
+						<TD><TT>XYZ</TT></TD>
+						<TD><TT>[ 0.0, 0.0, 0.0 ]</TT></TD>
+						<TD>
+							The direction of the light source, if the source is directional/spot
+						</TD>
+					</TR>
+					<TR>
+						<TD><TT>Angle</TT></TD>
+						<TD><TT>float</TT></TD>
+						<TD><TT>0.0</TT></TD>
+						<TD>
+							The light's angle of emission. Between <TT>0.0</TT> and <TT>90.0</TT> for directional/spot
+							sources, or the special value <TT>180.0</TT> for point sources
+						</TD>
+					</TR>
+					<TR>
+						<TD><TT>Directional</TT></TD>
+						<TD><TT>int</TT></TD>
+						<TD><TT>0</TT></TD>
+						<TD>
+							Whether the light should be a directional or spot source if <TT>Angle</TT> is not
+							<TT>180.0</TT>. Nonzero represents a directional source
+						</TD>
+					</TR>
+					<TR>
+						<TD><TT>Index</TT></TD>
+						<TD><TT>int</TT></TD>
+						<TD><TT>0</TT></TD>
+						<TD>
+							The light index the light should occupy. Each concurrently used light source should use
+							a unique index value. Accepted values lie in the range from <TT>0</TT> to <TT>7</TT>
+						</TD>
+					</TR>
+				</TABLE>
+			</P>
+			<H3>Light Attenuation Structure</H3>
+			<P><EM>New in 2.3.0</EM></P>
+			<P>
+				<TABLE>					
+					<TR>
+						<TD><EM>Key</EM></TD>
+						<TD><EM>Type</EM></TD>
+						<TD><EM>Description</EM></TD>
+					</TR>
+					<TR>
+						<TD><TT>Constant</TT></TD>
+						<TD><TT>Float</TT></TD>
+						<TD>
+							The constant attenuation of the source
+						</TD>
+					</TR>
+					<TR>
+						<TD><TT>Linear</TT></TD>
+						<TD><TT>Float</TT></TD>
+						<TD>
+							The linear attenuation of the source
+						</TD>
+					</TR>
+					<TR>
+						<TD><TT>Quadratic</TT></TD>
+						<TD><TT>Float</TT></TD>
+						<TD>
+							The quadratic attenuation of the source
+						</TD>
+					</TR>
+				</TABLE>
 			</P>
 			<HR>
 		</CENTER>
